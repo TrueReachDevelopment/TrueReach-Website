@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TrueReach Development — Professional web development for small local businesses in Tampa and Pinellas County. Custom websites, SEO, maintenance, and branding." />
+  <title>TrueReach Development | Web Development for Tampa & Pinellas County</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font pairing: Syne (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:      '#07090f',
+            surface: '#0d1018',
+            raised:  '#121622',
+            border:  '#1c2235',
+            amber:   '#d48a0c',
+            'amber-hi': '#f0a820',
+            gold:    '#c9a227',
+            muted:   '#8a96aa',
+            dim:     '#4e5a6e',
+          },
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
+          },
+          letterSpacing: {
+            tightest: '-0.03em',
+            tight:    '-0.02em',
+            wide:     '0.08em',
+            widest:   '0.14em',
+          },
+          lineHeight: {
+            body: '1.75',
+          },
+          boxShadow: {
+            card:    '0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.6)',
+            raised:  '0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.4)',
+            amber:   '0 4px 24px rgba(212,138,12,0.18), 0 1px 4px rgba(212,138,12,0.08)',
+            'amber-lg': '0 8px 40px rgba(212,138,12,0.22), 0 2px 8px rgba(212,138,12,0.1)',
+            glow:    '0 0 0 3px rgba(212,138,12,0.25)',
+          },
+          backgroundImage: {
+            'amber-grad': 'linear-gradient(135deg, #d48a0c, #c9a227)',
+            'amber-grad-r': 'linear-gradient(135deg, #f0a820, #d48a0c)',
+            'text-grad': 'linear-gradient(135deg, #f0a820, #c9a227)',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* Base resets */
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #07090f; color: #eef0f4; overflow-x: hidden; line-height: 1.75; }
+
+    /* SVG noise grain layer */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 1;
+    }
+
+    /* Gradient text utility */
+    .grad-text {
+      background: linear-gradient(135deg, #f0a820, #c9a227);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Amber button */
+    .btn-amber {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #d48a0c, #c9a227);
+      color: #07090f; font-weight: 600; font-size: 14px;
+      padding: 11px 24px; border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(212,138,12,0.22), 0 1px 4px rgba(212,138,12,0.1);
+      transition: opacity 0.2s, transform 0.2s;
+      cursor: pointer; border: none; text-decoration: none;
+    }
+    .btn-amber:hover   { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 40px rgba(212,138,12,0.28), 0 2px 8px rgba(212,138,12,0.12); }
+    .btn-amber:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(212,138,12,0.4); }
+    .btn-amber:active  { transform: translateY(0); opacity: 0.95; }
+
+    /* Ghost button */
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: #8a96aa; font-weight: 500; font-size: 14px;
+      padding: 11px 24px; border-radius: 8px;
+      border: 1px solid #1c2235;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-ghost:hover   { border-color: #d48a0c; color: #f0a820; transform: translateY(-1px); }
+    .btn-ghost:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(212,138,12,0.25); }
+    .btn-ghost:active  { transform: translateY(0); }
+
+    /* Tag badge */
+    .tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #d48a0c; background: rgba(212,138,12,0.08);
+      border: 1px solid rgba(212,138,12,0.22);
+      padding: 5px 13px; border-radius: 100px;
+    }
+    .tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #d48a0c; flex-shrink: 0; }
+
+    /* Card base, elevated, floating */
+    .card-base     { background: #0d1018; border: 1px solid #1c2235; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.6); }
+    .card-elevated { background: #121622; border: 1px solid #1c2235; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.4); }
+    .card-float    { background: #1a2035; border: 1px solid rgba(212,138,12,0.2); border-radius: 12px; box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 4px 24px rgba(212,138,12,0.1); }
+
+    /* Card hover lift */
+    .card-hover {
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .card-hover:hover {
+      border-color: rgba(212,138,12,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 4px 16px rgba(212,138,12,0.1);
+    }
+    .card-hover::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #d48a0c, #c9a227, transparent);
+      border-radius: 12px 12px 0 0;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .card-hover:hover::after { opacity: 1; }
+
+    /* Nav link hover */
+    .nav-link {
+      color: #8a96aa; font-size: 14px; font-weight: 500; text-decoration: none;
+      transition: color 0.2s; position: relative;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: #d48a0c;
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.25s;
+    }
+    .nav-link:hover { color: #eef0f4; }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .nav-link:focus-visible { outline: none; color: #f0a820; }
+
+    /* Fade-up animation */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* Code block */
+    .code-mono { font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 2; }
+    .code-kw  { color: #e89a54; }
+    .code-fn  { color: #7ec8e3; }
+    .code-str { color: #85c47a; }
+    .code-num { color: #f0a820; }
+    .code-cmt { color: #4e5a6e; }
+
+    /* Metric bar */
+    .metric-fill { height: 100%; background: linear-gradient(90deg, #d48a0c, #c9a227); border-radius: 3px; }
+
+    /* Service feature list */
+    .feat-list { list-style: none; padding: 0; }
+    .feat-list li {
+      font-size: 13.5px; color: #8a96aa; padding: 8px 0;
+      border-bottom: 1px solid #1c2235;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .feat-list li:last-child { border-bottom: none; }
+    .feat-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #d48a0c; flex-shrink: 0; }
+
+    /* Input/textarea/select */
+    .field {
+      width: 100%;
+      background: #07090f; border: 1px solid #1c2235; border-radius: 8px;
+      padding: 12px 14px; color: #eef0f4;
+      font-family: 'Inter', sans-serif; font-size: 14px; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .field::placeholder { color: #4e5a6e; }
+    .field:focus { border-color: #d48a0c; box-shadow: 0 0 0 3px rgba(212,138,12,0.12); }
+    .field:hover:not(:focus) { border-color: #2e3d58; }
+    select.field option { background: #0d1018; }
+    textarea.field { resize: vertical; min-height: 120px; }
+
+    /* Mobile menu */
+    #mobileMenu {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(7,9,15,0.97);
+      flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+    }
+    #mobileMenu.open { display: flex; }
+    #mobileMenu a {
+      font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 700;
+      color: #eef0f4; text-decoration: none;
+      transition: color 0.2s;
+    }
+    #mobileMenu a:hover { color: #f0a820; }
+
+    /* Scrolled nav */
+    #mainNav.scrolled {
+      background: rgba(7,9,15,0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #1c2235;
+    }
+
+    @media (max-width: 768px) {
+      .hide-mobile { display: none !important; }
+      .show-mobile { display: flex !important; }
+    }
+    @media (min-width: 769px) {
+      .show-mobile { display: none !important; }
+    }
+  </style>
+</head>
+<body class="relative z-10">
+
+<!-- ─── MOBILE MENU ─── -->
+<div id="mobileMenu">
+  <button onclick="closeMobile()" class="absolute top-6 right-6 text-3xl text-muted bg-transparent border-none cursor-pointer hover:text-amber-hi transition-colors duration-200" aria-label="Close">&times;</button>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#why" onclick="closeMobile()">Why Us</a>
+  <a href="#process" onclick="closeMobile()">Process</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="mainNav" class="fixed top-0 left-0 right-0 z-100 py-5 transition-all duration-300" style="z-index:100;">
+  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-3 no-underline">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold font-display" style="background: linear-gradient(135deg, #d48a0c, #c9a227); color: #07090f;">TR</div>
+      <span class="font-display font-bold text-base text-[#eef0f4] tracking-tight">TrueReach <span class="text-amber">Dev</span></span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hide-mobile flex items-center gap-8 list-none">
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#why" class="nav-link">Why Us</a></li>
+      <li><a href="#process" class="nav-link">Process</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+
+    <a href="#contact" class="btn-amber hide-mobile">Get a Free Quote</a>
+
+    <!-- Hamburger -->
+    <button onclick="openMobile()" class="show-mobile flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1" aria-label="Menu">
+      <span class="block w-6 h-[2px] bg-[#eef0f4] rounded-sm transition-all duration-300"></span>
+      <span class="block w-6 h-[2px] bg-[#eef0f4] rounded-sm transition-all duration-300"></span>
+      <span class="block w-6 h-[2px] bg-[#eef0f4] rounded-sm transition-all duration-300"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero" class="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden">
+
+  <!-- Radial glow layers -->
+  <div class="absolute -top-32 -right-40 w-[700px] h-[700px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(212,138,12,0.13) 0%, transparent 68%);"></div>
+  <div class="absolute -bottom-20 -left-32 w-[500px] h-[500px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(201,162,39,0.07) 0%, transparent 70%);"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full pointer-events-none" style="background: radial-gradient(ellipse, rgba(212,138,12,0.04) 0%, transparent 65%);"></div>
+
+  <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left -->
+      <div>
+        <div class="fade-up mb-5"><span class="tag">Tampa &amp; Pinellas County</span></div>
+
+        <h1 class="fade-up font-display font-extrabold tracking-tightest leading-none mb-6" style="font-size: clamp(40px, 5.5vw, 66px);">
+          Websites That<br/>
+          <span class="grad-text">Work As Hard</span><br/>
+          As You Do
+        </h1>
+
+        <p class="fade-up text-[17px] text-muted leading-body max-w-[480px] mb-9">
+          TrueReach Development builds professional, high-performance websites for small local businesses in Tampa and Pinellas County — designed to attract customers and grow your brand online.
+        </p>
+
+        <div class="fade-up flex flex-wrap gap-3 mb-14">
+          <a href="#contact" class="btn-amber">Get a Free Quote &rarr;</a>
+          <a href="#services" class="btn-ghost">View Services</a>
+        </div>
+
+        <div class="fade-up flex flex-wrap gap-8 pt-8 border-t border-border">
+          <div>
+            <div class="font-display font-extrabold text-3xl grad-text tracking-tight">100%</div>
+            <div class="text-xs text-dim mt-1 tracking-wide uppercase">Custom Built</div>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-3xl grad-text tracking-tight">Local</div>
+            <div class="text-xs text-dim mt-1 tracking-wide uppercase">Tampa Bay Based</div>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-3xl grad-text tracking-tight">Fast</div>
+            <div class="text-xs text-dim mt-1 tracking-wide uppercase">Optimized Performance</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Code card -->
+      <div class="fade-up hidden lg:block relative">
+        <!-- Floating top badge -->
+        <div class="card-float absolute -top-5 -left-6 z-20 flex items-center gap-3 px-4 py-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:rgba(133,196,122,0.12); color:#85c47a;">⚡</div>
+          <div>
+            <div class="text-[10px] text-dim tracking-wide uppercase">Performance Score</div>
+            <div class="font-semibold text-sm">98 / 100</div>
+          </div>
+        </div>
+
+        <!-- Code card -->
+        <div class="card-elevated p-6 relative">
+          <div class="flex items-center gap-2 mb-5 pb-3 border-b border-border">
+            <span class="w-3 h-3 rounded-full" style="background:#e15f5f;"></span>
+            <span class="w-3 h-3 rounded-full" style="background:#e8a020;"></span>
+            <span class="w-3 h-3 rounded-full" style="background:#5db85d;"></span>
+            <span class="text-xs text-dim ml-2">truereachdevelopment.com</span>
+          </div>
+          <div class="code-mono">
+            <div><span class="code-kw">const</span> site = <span class="code-fn">buildWebsite</span>({</div>
+            <div>&nbsp;&nbsp;client: <span class="code-str">"Tampa Bay Business"</span>,</div>
+            <div>&nbsp;&nbsp;design: <span class="code-str">"custom"</span>,</div>
+            <div>&nbsp;&nbsp;mobile: <span class="code-kw">true</span>,</div>
+            <div>&nbsp;&nbsp;seo: <span class="code-kw">true</span>,</div>
+            <div>&nbsp;&nbsp;performance: <span class="code-num">98</span>,</div>
+            <div>});</div>
+            <div class="mt-2"><span class="code-fn">deploy</span>(site); <span class="code-cmt">// ✓ Live in days</span></div>
+          </div>
+        </div>
+
+        <!-- Floating bottom badge -->
+        <div class="card-float absolute -bottom-5 -right-6 z-20 flex items-center gap-3 px-4 py-3">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:rgba(212,138,12,0.12); color:#d48a0c;">📍</div>
+          <div>
+            <div class="text-[10px] text-dim tracking-wide uppercase">Serving</div>
+            <div class="font-semibold text-sm">Tampa Bay Area</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services" class="relative py-24" style="background:#0d1018;">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-16 fade-up">
+      <span class="tag mb-4 inline-flex">What We Do</span>
+      <h2 class="font-display font-extrabold tracking-tight leading-none mb-4" style="font-size: clamp(30px, 4vw, 46px);">
+        Services Built for<br/>Local Business Growth
+      </h2>
+      <p class="text-muted text-base max-w-md mx-auto leading-body">Everything you need to establish and grow your digital presence — built by people who know the Tampa Bay market.</p>
+    </div>
+
+    <div class="grid gap-6">
+
+      <!-- Featured: Web Dev -->
+      <div class="card-base card-hover relative overflow-hidden p-8 lg:p-10 fade-up">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <div class="w-13 h-13 rounded-xl flex items-center justify-center text-2xl mb-5" style="width:52px;height:52px;background:rgba(212,138,12,0.1);border:1px solid rgba(212,138,12,0.2);">🌐</div>
+            <h3 class="font-display font-bold text-xl mb-3 tracking-tight">Web Development</h3>
+            <p class="text-muted text-sm leading-body mb-5">Your website is your digital storefront — and first impressions matter. We design and develop custom, mobile-first websites that are fast, visually polished, and built to convert visitors into customers. No templates. No cookie-cutter layouts.</p>
+            <ul class="feat-list">
+              <li>Custom design tailored to your brand</li>
+              <li>Mobile-first &amp; fully responsive</li>
+              <li>Fast load times &amp; optimized performance</li>
+              <li>Contact forms, booking integrations &amp; more</li>
+              <li>Secure hosting setup &amp; domain guidance</li>
+              <li>Built for local Tampa Bay businesses</li>
+            </ul>
+            <div class="mt-7">
+              <a href="#contact" class="btn-amber">Start Your Website &rarr;</a>
+            </div>
+          </div>
+
+          <div class="card-elevated p-6">
+            <div class="text-[11px] text-dim tracking-widest uppercase mb-5">What you get</div>
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center gap-4">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0" style="width:40px;height:40px;background:rgba(212,138,12,0.1);">🎨</div>
+                <div>
+                  <div class="text-sm font-semibold">Custom Design</div>
+                  <div class="text-xs text-dim mt-0.5">Unique to your brand</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0" style="width:40px;height:40px;background:rgba(212,138,12,0.1);">📱</div>
+                <div>
+                  <div class="text-sm font-semibold">Mobile Ready</div>
+                  <div class="text-xs text-dim mt-0.5">Looks great on any device</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0" style="width:40px;height:40px;background:rgba(212,138,12,0.1);">⚡</div>
+                <div>
+                  <div class="text-sm font-semibold">High Performance</div>
+                  <div class="text-xs text-dim mt-0.5">Fast loads, better rankings</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0" style="width:40px;height:40px;background:rgba(212,138,12,0.1);">🔒</div>
+                <div>
+                  <div class="text-sm font-semibold">Secure &amp; Reliable</div>
+                  <div class="text-xs text-dim mt-0.5">SSL, hosting &amp; support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO + Maintenance row -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div class="card-base card-hover relative overflow-hidden p-8 fade-up">
+          <div class="w-13 h-13 rounded-xl flex items-center justify-center text-2xl mb-5" style="width:52px;height:52px;background:rgba(212,138,12,0.1);border:1px solid rgba(212,138,12,0.2);">🔍</div>
+          <h3 class="font-display font-bold text-lg mb-2 tracking-tight">
+            SEO Optimization
+            <span class="text-[10px] font-semibold tracking-widest uppercase text-dim bg-[rgba(255,255,255,0.04)] border border-border px-2 py-0.5 rounded-full ml-2 align-middle">Coming Soon</span>
+          </h3>
+          <p class="text-muted text-sm leading-body mb-5">Get found by local customers searching for your services. We optimize your site and local listings so you rank higher in Tampa Bay Google searches.</p>
+          <ul class="feat-list">
+            <li>Local SEO &amp; Google Business Profile</li>
+            <li>On-page optimization</li>
+            <li>Keyword targeting for Tampa markets</li>
+            <li>Monthly ranking reports</li>
+          </ul>
+        </div>
+
+        <div class="card-base card-hover relative overflow-hidden p-8 fade-up">
+          <div class="w-13 h-13 rounded-xl flex items-center justify-center text-2xl mb-5" style="width:52px;height:52px;background:rgba(212,138,12,0.1);border:1px solid rgba(212,138,12,0.2);">🔧</div>
+          <h3 class="font-display font-bold text-lg mb-2 tracking-tight">
+            Website Maintenance
+            <span class="text-[10px] font-semibold tracking-widest uppercase text-dim bg-[rgba(255,255,255,0.04)] border border-border px-2 py-0.5 rounded-full ml-2 align-middle">Coming Soon</span>
+          </h3>
+          <p class="text-muted text-sm leading-body mb-5">Keep your site running smoothly without lifting a finger. We handle updates, backups, security monitoring, and content changes on your behalf.</p>
+          <ul class="feat-list">
+            <li>Regular software updates</li>
+            <li>Security monitoring &amp; backups</li>
+            <li>Content updates &amp; edits</li>
+            <li>Uptime monitoring</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY US ─── -->
+<section id="why" class="relative py-24" style="background:#07090f;">
+  <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none" style="background:radial-gradient(circle, rgba(212,138,12,0.07) 0%, transparent 65%); transform: translate(30%, -30%);"></div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Left -->
+      <div>
+        <span class="tag mb-4 inline-flex">Why TrueReach</span>
+        <h2 class="font-display font-extrabold tracking-tight leading-none mb-5" style="font-size: clamp(28px, 4vw, 44px);">
+          Built for Small<br/>Local Businesses
+        </h2>
+        <p class="text-muted text-[15px] leading-body mb-4">Big agencies build websites for big budgets. We specialize in helping Tampa Bay's small businesses compete online — with professional results that don't require an enterprise price tag.</p>
+        <p class="text-muted text-[15px] leading-body mb-8">We're local, accountable, and invested in your success. When you work with TrueReach, you get a direct line to the people building your site.</p>
+
+        <div class="flex flex-col gap-4">
+          <div class="card-base card-hover relative overflow-hidden p-5 flex gap-4 items-start transition-all duration-300">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="width:42px;height:42px;background:rgba(212,138,12,0.1);">📍</div>
+            <div>
+              <h4 class="font-semibold text-sm mb-1">Tampa Bay Local</h4>
+              <p class="text-muted text-[13px] leading-body m-0">We know the local market. We understand what Tampa and Pinellas County customers are searching for and build with that in mind.</p>
+            </div>
+          </div>
+          <div class="card-base card-hover relative overflow-hidden p-5 flex gap-4 items-start transition-all duration-300">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="width:42px;height:42px;background:rgba(212,138,12,0.1);">💬</div>
+            <div>
+              <h4 class="font-semibold text-sm mb-1">Direct Communication</h4>
+              <p class="text-muted text-[13px] leading-body m-0">No account managers or ticketing systems. You talk directly to the developer building your site, every step of the way.</p>
+            </div>
+          </div>
+          <div class="card-base card-hover relative overflow-hidden p-5 flex gap-4 items-start transition-all duration-300">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="width:42px;height:42px;background:rgba(212,138,12,0.1);">🚀</div>
+            <div>
+              <h4 class="font-semibold text-sm mb-1">Built to Perform</h4>
+              <p class="text-muted text-[13px] leading-body m-0">Every site we build is optimized for speed, accessibility, and search engines — not just to look good in a demo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Metrics card -->
+      <div class="fade-up relative mt-4">
+        <div class="card-elevated overflow-hidden">
+          <div class="flex items-center gap-2 p-5 border-b border-border">
+            <span class="w-2.5 h-2.5 rounded-full" style="background:#d48a0c;"></span>
+            <span class="font-semibold text-[13px] ml-1">Site Health Overview</span>
+          </div>
+          <div>
+            <div class="flex items-center justify-between px-5 py-4 border-b border-border">
+              <span class="text-sm text-muted">Performance</span>
+              <div class="flex items-center gap-3">
+                <div class="w-20 h-[5px] rounded-full overflow-hidden" style="background:#1c2235;"><div class="metric-fill" style="width:97%;"></div></div>
+                <span class="text-sm font-semibold w-6">97</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-4 border-b border-border">
+              <span class="text-sm text-muted">Accessibility</span>
+              <div class="flex items-center gap-3">
+                <div class="w-20 h-[5px] rounded-full overflow-hidden" style="background:#1c2235;"><div class="metric-fill" style="width:100%;"></div></div>
+                <span class="text-sm font-semibold w-6">100</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-4 border-b border-border">
+              <span class="text-sm text-muted">Best Practices</span>
+              <div class="flex items-center gap-3">
+                <div class="w-20 h-[5px] rounded-full overflow-hidden" style="background:#1c2235;"><div class="metric-fill" style="width:95%;"></div></div>
+                <span class="text-sm font-semibold w-6">95</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-4 border-b border-border">
+              <span class="text-sm text-muted">SEO</span>
+              <div class="flex items-center gap-3">
+                <div class="w-20 h-[5px] rounded-full overflow-hidden" style="background:#1c2235;"><div class="metric-fill" style="width:100%;"></div></div>
+                <span class="text-sm font-semibold w-6">100</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-5 py-4">
+              <span class="text-sm text-muted">Mobile Friendly</span>
+              <span class="text-sm font-semibold" style="color:#85c47a;">✓ Passed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating load-time badge -->
+        <div class="card-float absolute -bottom-6 -right-4 px-5 py-4" style="z-index:20;">
+          <div class="text-[10px] text-dim tracking-widest uppercase mb-1">Avg. Load Time</div>
+          <div class="font-display font-extrabold text-2xl grad-text tracking-tight">&lt; 1.2s</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section id="process" class="relative py-24" style="background:#0d1018;">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-16 fade-up">
+      <span class="tag mb-4 inline-flex">How It Works</span>
+      <h2 class="font-display font-extrabold tracking-tight leading-none mb-4" style="font-size: clamp(28px, 4vw, 44px);">
+        From Idea to Live<br/>in Four Steps
+      </h2>
+      <p class="text-muted text-base max-w-md mx-auto leading-body">A clear, collaborative process designed to get your business online without the stress or confusion.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card-base card-hover relative overflow-hidden p-7 text-center fade-up">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center font-display font-extrabold text-base mx-auto mb-5" style="background:linear-gradient(135deg,#d48a0c,#c9a227);color:#07090f;">01</div>
+        <h3 class="font-display font-bold text-base mb-3 tracking-tight">Discovery</h3>
+        <p class="text-muted text-[13px] leading-body">We start with a free consultation to understand your business, your goals, and what you need from your website.</p>
+      </div>
+      <div class="card-base card-hover relative overflow-hidden p-7 text-center fade-up">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center font-display font-extrabold text-base mx-auto mb-5" style="background:linear-gradient(135deg,#d48a0c,#c9a227);color:#07090f;">02</div>
+        <h3 class="font-display font-bold text-base mb-3 tracking-tight">Design</h3>
+        <p class="text-muted text-[13px] leading-body">We create a custom design direction based on your brand. You review and approve before a single line of code is written.</p>
+      </div>
+      <div class="card-base card-hover relative overflow-hidden p-7 text-center fade-up">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center font-display font-extrabold text-base mx-auto mb-5" style="background:linear-gradient(135deg,#d48a0c,#c9a227);color:#07090f;">03</div>
+        <h3 class="font-display font-bold text-base mb-3 tracking-tight">Development</h3>
+        <p class="text-muted text-[13px] leading-body">We build your site with clean, fast, and secure code. You're kept in the loop throughout the entire build process.</p>
+      </div>
+      <div class="card-base card-hover relative overflow-hidden p-7 text-center fade-up">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center font-display font-extrabold text-base mx-auto mb-5" style="background:linear-gradient(135deg,#d48a0c,#c9a227);color:#07090f;">04</div>
+        <h3 class="font-display font-bold text-base mb-3 tracking-tight">Launch</h3>
+        <p class="text-muted text-[13px] leading-body">We handle deployment, testing, and going live. After launch, we provide support to make sure everything runs perfectly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact" class="relative py-24" style="background:#07090f;">
+  <div class="absolute bottom-0 left-0 w-[600px] h-[500px] rounded-full pointer-events-none" style="background:radial-gradient(circle, rgba(212,138,12,0.06) 0%, transparent 65%); transform: translate(-30%, 30%);"></div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Info -->
+      <div>
+        <span class="tag mb-4 inline-flex">Get In Touch</span>
+        <h2 class="font-display font-extrabold tracking-tight leading-none mb-5" style="font-size: clamp(28px, 4vw, 44px);">
+          Ready to Build<br/>Your Website?
+        </h2>
+        <p class="text-muted text-[15px] leading-body mb-9">Get a free consultation and quote. No pressure, no commitment — just an honest conversation about what your business needs online.</p>
+
+        <div class="flex flex-col gap-4">
+          <div class="card-base p-5 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-base flex-shrink-0" style="width:42px;height:42px;background:rgba(212,138,12,0.1);border:1px solid rgba(212,138,12,0.18);">📧</div>
+            <div>
+              <div class="text-[10px] text-dim tracking-widest uppercase mb-1">Email</div>
+              <a href="mailto:dylan@truereachdevelopment.com" class="text-sm font-medium text-[#eef0f4] no-underline transition-colors duration-200 hover:text-amber-hi">dylan@truereachdevelopment.com</a>
+            </div>
+          </div>
+          <div class="card-base p-5 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-base flex-shrink-0" style="width:42px;height:42px;background:rgba(212,138,12,0.1);border:1px solid rgba(212,138,12,0.18);">📞</div>
+            <div>
+              <div class="text-[10px] text-dim tracking-widest uppercase mb-1">Phone</div>
+              <a href="tel:7277320799" class="text-sm font-medium text-[#eef0f4] no-underline transition-colors duration-200 hover:text-amber-hi">(727) 732-0799</a>
+            </div>
+          </div>
+          <div class="card-base p-5 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-base flex-shrink-0" style="width:42px;height:42px;background:rgba(212,138,12,0.1);border:1px solid rgba(212,138,12,0.18);">📍</div>
+            <div>
+              <div class="text-[10px] text-dim tracking-widest uppercase mb-1">Service Area</div>
+              <div class="text-sm font-medium">Tampa &amp; Pinellas County, FL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="card-elevated p-8 fade-up">
+        <h3 class="font-display font-bold text-xl tracking-tight mb-6">Send Us a Message</h3>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-[11px] font-semibold text-muted tracking-wide uppercase mb-2">Your Name</label>
+              <input type="text" name="name" placeholder="Jane Smith" required class="field" />
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold text-muted tracking-wide uppercase mb-2">Business Name</label>
+              <input type="text" name="business" placeholder="Smith's Auto Repair" class="field" />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-[11px] font-semibold text-muted tracking-wide uppercase mb-2">Email Address</label>
+            <input type="email" name="email" placeholder="jane@yourbusiness.com" required class="field" />
+          </div>
+          <div class="mb-4">
+            <label class="block text-[11px] font-semibold text-muted tracking-wide uppercase mb-2">Phone Number</label>
+            <input type="tel" name="phone" placeholder="(727) 555-0100" class="field" />
+          </div>
+          <div class="mb-4">
+            <label class="block text-[11px] font-semibold text-muted tracking-wide uppercase mb-2">Service You're Interested In</label>
+            <select name="service" class="field">
+              <option value="">Select a service...</option>
+              <option value="web-dev">Web Development</option>
+              <option value="seo">SEO Optimization</option>
+              <option value="maintenance">Website Maintenance</option>
+              <option value="other">Other / Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="mb-6">
+            <label class="block text-[11px] font-semibold text-muted tracking-wide uppercase mb-2">Tell Us About Your Business</label>
+            <textarea name="message" placeholder="What does your business do? Do you have an existing site? What are your main goals?" required class="field"></textarea>
+          </div>
+          <button type="submit" class="btn-amber w-full justify-center" style="width:100%;">
+            Send Message &rarr;
+          </button>
+          <div id="formSuccess" class="hidden mt-4 p-4 rounded-lg text-sm text-center font-medium" style="background:rgba(133,196,122,0.1);border:1px solid rgba(133,196,122,0.25);color:#85c47a;">
+            Message sent! We'll be in touch shortly.
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="relative py-12 border-t border-border" style="background:#0d1018;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <a href="#hero" class="flex items-center gap-3 no-underline mb-4">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold font-display" style="background:linear-gradient(135deg,#d48a0c,#c9a227);color:#07090f;">TR</div>
+          <span class="font-display font-bold text-base text-[#eef0f4] tracking-tight">TrueReach <span class="text-amber">Dev</span></span>
+        </a>
+        <p class="text-dim text-sm leading-body max-w-[260px]">Professional web development for small local businesses in Tampa and Pinellas County, Florida.</p>
+      </div>
+      <div>
+        <h4 class="text-[11px] font-semibold tracking-widest uppercase text-dim mb-4">Services</h4>
+        <ul class="list-none flex flex-col gap-2.5">
+          <li><a href="#services" class="text-sm text-muted no-underline transition-colors duration-200 hover:text-amber-hi focus-visible:text-amber-hi">Web Development</a></li>
+          <li><a href="#services" class="text-sm text-muted no-underline transition-colors duration-200 hover:text-amber-hi focus-visible:text-amber-hi">SEO Optimization</a></li>
+          <li><a href="#services" class="text-sm text-muted no-underline transition-colors duration-200 hover:text-amber-hi focus-visible:text-amber-hi">Website Maintenance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[11px] font-semibold tracking-widest uppercase text-dim mb-4">Company</h4>
+        <ul class="list-none flex flex-col gap-2.5">
+          <li><a href="#why" class="text-sm text-muted no-underline transition-colors duration-200 hover:text-amber-hi focus-visible:text-amber-hi">Why TrueReach</a></li>
+          <li><a href="#process" class="text-sm text-muted no-underline transition-colors duration-200 hover:text-amber-hi focus-visible:text-amber-hi">Our Process</a></li>
+          <li><a href="#contact" class="text-sm text-muted no-underline transition-colors duration-200 hover:text-amber-hi focus-visible:text-amber-hi">Get a Quote</a></li>
+          <li><a href="mailto:dylan@truereachdevelopment.com" class="text-sm text-muted no-underline transition-colors duration-200 hover:text-amber-hi focus-visible:text-amber-hi">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-6 border-t border-border text-[13px] text-dim">
+      <span>&copy; 2026 TrueReach Development. All rights reserved.</span>
+      <span>Tampa &amp; Pinellas County, FL &mdash; <a href="mailto:dylan@truereachdevelopment.com" class="text-dim no-underline hover:text-amber-hi transition-colors duration-200">dylan@truereachdevelopment.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scrolled nav
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+  // Mobile menu
+  function openMobile()  { document.getElementById('mobileMenu').classList.add('open');    document.body.style.overflow = 'hidden'; }
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+
+  // Fade-up on scroll — stagger siblings
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const siblings = e.target.parentElement.querySelectorAll('.fade-up');
+      const idx = [...siblings].indexOf(e.target);
+      setTimeout(() => e.target.classList.add('visible'), idx * 90);
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // Form submit (demo — wire to Formspree / Netlify Forms / backend)
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('formSuccess').classList.remove('hidden');
+      e.target.reset();
+      btn.textContent = 'Send Message →'; btn.disabled = false;
+    }, 1200);
+  }
+</script>
+
+</body>
+</html>
