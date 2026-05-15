@@ -288,16 +288,29 @@
     }
     .coach-card:hover { border-color: rgba(74,222,128,0.2); }
     .coach-banner {
-      height: 160px; position: relative; overflow: hidden;
+      height: 180px; position: relative; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
     }
-    /* Unique gradient per coach via inline style */
     .coach-specialty-bar {
-      position: absolute; top: 16px; left: 16px;
+      position: absolute; top: 14px; left: 14px; z-index: 2;
       font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
       color: #080a08; background: #4ade80; padding: 4px 10px; border-radius: 2px;
     }
-    .coach-icon { font-size: 64px; opacity: 0.3; }
+    .coach-initials {
+      width: 88px; height: 88px; border-radius: 50%;
+      border: 2px solid rgba(74,222,128,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 900;
+      color: rgba(74,222,128,0.9); background: rgba(74,222,128,0.08);
+      position: relative; z-index: 1;
+    }
+    .coach-banner-grid {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(74,222,128,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74,222,128,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
     .coach-body { padding: 20px 22px 24px; }
     .coach-name { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #edf4ed; margin-bottom: 3px; }
     .coach-role { font-size: 12px; color: #4ade80; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
@@ -702,9 +715,10 @@
     <p class="section-sub">Every Zenith coach is certified, experienced, and entirely focused on your results. They know your name, your goals, and your last PR.</p>
     <div class="coaches-grid">
       <div class="coach-card">
-        <div class="coach-banner" style="background:linear-gradient(135deg,#1a0c0c,#0d0808);">
+        <div class="coach-banner" style="background:linear-gradient(135deg,#111a11,#0a0d0a);">
+          <div class="coach-banner-grid"></div>
           <div class="coach-specialty-bar">Strength & Powerlifting</div>
-          <div class="coach-icon">🏋️</div>
+          <div class="coach-initials">MR</div>
         </div>
         <div class="coach-body">
           <div class="coach-name">Marcus Rivera</div>
@@ -718,9 +732,10 @@
         </div>
       </div>
       <div class="coach-card">
-        <div class="coach-banner" style="background:linear-gradient(135deg,#0f1a0c,#080f08);">
+        <div class="coach-banner" style="background:linear-gradient(135deg,#111a11,#0a0d0a);">
+          <div class="coach-banner-grid"></div>
           <div class="coach-specialty-bar">HIIT & Fat Loss</div>
-          <div class="coach-icon">🔥</div>
+          <div class="coach-initials">KT</div>
         </div>
         <div class="coach-body">
           <div class="coach-name">Kayla Thompson</div>
@@ -734,9 +749,10 @@
         </div>
       </div>
       <div class="coach-card">
-        <div class="coach-banner" style="background:linear-gradient(135deg,#0c1018,#080c12);">
+        <div class="coach-banner" style="background:linear-gradient(135deg,#111a11,#0a0d0a);">
+          <div class="coach-banner-grid"></div>
           <div class="coach-specialty-bar">Athletic Performance</div>
-          <div class="coach-icon">⚡</div>
+          <div class="coach-initials">DS</div>
         </div>
         <div class="coach-body">
           <div class="coach-name">Derek Santos</div>
