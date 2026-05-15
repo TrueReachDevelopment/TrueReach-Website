@@ -217,8 +217,8 @@
     .ba-section { padding: 80px 48px; background: #f5f1ec; }
     .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-radius: 10px; overflow: hidden; border: 1px solid #e2dbd2; }
     .ba-panel { padding: 40px; position: relative; }
-    .ba-panel.before { background: #ffffff; }
-    .ba-panel.after { background: #141810; }
+    .ba-panel.before { background: #fff8f5; border-right: none; }
+    .ba-panel.after { background: #f2faf4; border-left: 3px solid #22c55e; }
     .ba-label {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 800;
@@ -226,7 +226,7 @@
       padding: 5px 14px; border-radius: 3px; margin-bottom: 28px;
     }
     .ba-label.before-label { color: #ef4444; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); }
-    .ba-label.after-label { color: #22c55e; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); }
+    .ba-label.after-label { color: #166534; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.35); }
     .ba-items { display: flex; flex-direction: column; gap: 14px; }
     .ba-item { display: flex; align-items: center; gap: 12px; font-size: 14px; }
     .ba-item.neg { color: #5e5e68; }
@@ -618,27 +618,6 @@
   <div class="section-inner">
     <div class="section-label">The Difference</div>
     <h2>Before Storm Shield.<br/><span>After Storm Shield.</span></h2>
-
-    <!-- Photo comparison strip -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;border-radius:10px;overflow:hidden;margin-bottom:24px;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
-      <div style="position:relative;">
-        <img src="https://images.unsplash.com/photo-1503594384566-461fe158e797?auto=format&fit=crop&w=700&q=80"
-          alt="Damaged roof before repair"
-          onerror="this.parentElement.style.background='#1a1008'"
-          style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(0.65) saturate(0.7);">
-        <div style="position:absolute;inset:0;background:rgba(239,68,68,0.12);"></div>
-        <div style="position:absolute;top:14px;left:14px;background:rgba(239,68,68,0.92);color:#fff;font-size:11px;font-weight:800;padding:5px 14px;border-radius:3px;text-transform:uppercase;letter-spacing:0.1em;">✗ Before</div>
-        <div style="position:absolute;bottom:14px;left:14px;right:14px;font-size:12px;color:rgba(255,255,255,0.7);">Storm damage · Leaking · Shingles missing</div>
-      </div>
-      <div style="position:relative;">
-        <img src="https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?auto=format&fit=crop&w=700&q=80"
-          alt="New roof installed by Storm Shield"
-          onerror="this.parentElement.style.background='#0d1a0a'"
-          style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(1.05) saturate(1.1);">
-        <div style="position:absolute;top:14px;left:14px;background:rgba(34,197,94,0.92);color:#fff;font-size:11px;font-weight:800;padding:5px 14px;border-radius:3px;text-transform:uppercase;letter-spacing:0.1em;">✓ After</div>
-        <div style="position:absolute;bottom:14px;left:14px;right:14px;font-size:12px;color:rgba(255,255,255,0.7);">New shingles · Warranty issued · Insurance paid</div>
-      </div>
-    </div>
 
     <div class="ba-grid">
       <div class="ba-panel before" style="position:relative;">
