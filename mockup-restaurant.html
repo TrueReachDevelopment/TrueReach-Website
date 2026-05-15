@@ -546,7 +546,7 @@
     <!-- Signature dish photos -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px;">
       <div style="position:relative;border-radius:6px;overflow:hidden;">
-        <img src="https://images.pexels.com/photos/34279949/pexels-photo-34279949.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&dpr=1"
+        <img src="https://images.pexels.com/photos/33969097/pexels-photo-33969097.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&dpr=1"
           alt="Gulf Shrimp Ceviche"
           onerror="this.parentElement.style.background='#18130c'"
           style="width:100%;height:180px;object-fit:cover;display:block;filter:brightness(0.85);">
@@ -556,7 +556,7 @@
         </div>
       </div>
       <div style="position:relative;border-radius:6px;overflow:hidden;">
-        <img src="https://images.pexels.com/photos/3655916/pexels-photo-3655916.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&dpr=1"
+        <img src="https://images.pexels.com/photos/36378585/pexels-photo-36378585.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&dpr=1"
           alt="Whole Roasted Florida Snapper"
           onerror="this.parentElement.style.background='#18130c'"
           style="width:100%;height:180px;object-fit:cover;display:block;filter:brightness(0.85);">
@@ -566,7 +566,7 @@
         </div>
       </div>
       <div style="position:relative;border-radius:6px;overflow:hidden;">
-        <img src="https://images.pexels.com/photos/31846709/pexels-photo-31846709.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&dpr=1"
+        <img src="https://images.pexels.com/photos/34433608/pexels-photo-34433608.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&dpr=1"
           alt="8oz Prime Filet Mignon"
           onerror="this.parentElement.style.background='#18130c'"
           style="width:100%;height:180px;object-fit:cover;display:block;filter:brightness(0.85);">
@@ -578,14 +578,15 @@
     </div>
 
     <div class="menu-tabs">
-      <div class="menu-tab active">Starters</div>
-      <div class="menu-tab">Raw Bar</div>
-      <div class="menu-tab">From the Sea</div>
-      <div class="menu-tab">From the Land</div>
-      <div class="menu-tab">Desserts</div>
+      <div class="menu-tab active" data-tab="starters">Starters</div>
+      <div class="menu-tab" data-tab="raw-bar">Raw Bar</div>
+      <div class="menu-tab" data-tab="sea">From the Sea</div>
+      <div class="menu-tab" data-tab="land">From the Land</div>
+      <div class="menu-tab" data-tab="desserts">Desserts</div>
     </div>
 
-    <div class="menu-list">
+    <!-- STARTERS -->
+    <div class="menu-list menu-panel" data-panel="starters">
       <div class="menu-item">
         <div class="menu-item-left">
           <div class="menu-item-name">Gulf Shrimp Ceviche</div>
@@ -604,25 +605,153 @@
       </div>
       <div class="menu-item">
         <div class="menu-item-left">
-          <div class="menu-item-name">Burrata & Heirloom Tomato</div>
+          <div class="menu-item-name">Burrata &amp; Heirloom Tomato</div>
           <div class="menu-item-desc">Fresh burrata, Florida heirloom tomatoes, aged balsamic, sea salt, torn basil, cold-pressed olive oil</div>
         </div>
         <div class="menu-item-price">$19</div>
       </div>
       <div class="menu-item">
         <div class="menu-item-left">
+          <div class="menu-item-name">Crispy Calamari</div>
+          <div class="menu-item-desc">Lightly fried Gulf squid, charred lemon aioli, calabrian chili, fresh parsley</div>
+        </div>
+        <div class="menu-item-price">$18</div>
+      </div>
+    </div>
+
+    <!-- RAW BAR -->
+    <div class="menu-list menu-panel" data-panel="raw-bar" style="display:none;">
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Oysters on the Half Shell</div>
+          <div class="menu-item-desc">Six East or West Coast oysters, classic mignonette, cocktail sauce, fresh horseradish</div>
+          <div class="menu-item-note">Ask your server for today's selection</div>
+        </div>
+        <div class="menu-item-price">$24</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Chilled Jumbo Shrimp Cocktail</div>
+          <div class="menu-item-desc">Six U-10 Gulf shrimp, house cocktail sauce, charred lemon</div>
+        </div>
+        <div class="menu-item-price">$22</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Florida Stone Crab Claws</div>
+          <div class="menu-item-desc">Seasonal stone crab claws, mustard sauce, drawn butter</div>
+          <div class="menu-item-note">Market price · October – May only</div>
+        </div>
+        <div class="menu-item-price">MKT</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Raw Bar Tower</div>
+          <div class="menu-item-desc">Oysters, shrimp cocktail, crab claws, ceviche, and smoked salmon — serves two</div>
+          <div class="menu-item-note">Perfect for sharing · Allow 10 minutes</div>
+        </div>
+        <div class="menu-item-price">$88</div>
+      </div>
+    </div>
+
+    <!-- FROM THE SEA -->
+    <div class="menu-list menu-panel" data-panel="sea" style="display:none;">
+      <div class="menu-item">
+        <div class="menu-item-left">
           <div class="menu-item-name">Whole Roasted Florida Snapper</div>
           <div class="menu-item-desc">Line-caught red snapper, herb chimichurri, charred lemon, braised seasonal greens, olive oil</div>
-          <div class="menu-item-note">Market price · Sourced from Cortez fishermen</div>
+          <div class="menu-item-note">Sourced from Cortez fishermen · Market price</div>
         </div>
         <div class="menu-item-price">$58</div>
       </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Pan-Seared Gulf Grouper</div>
+          <div class="menu-item-desc">Florida black grouper, saffron beurre blanc, fingerling potatoes, haricots verts, crispy shallots</div>
+        </div>
+        <div class="menu-item-price">$46</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Seared Yellowfin Tuna</div>
+          <div class="menu-item-desc">Sesame-crusted Gulf tuna, ginger-miso glaze, forbidden rice, pickled cucumber, micro cilantro</div>
+          <div class="menu-item-note">Served rare unless otherwise requested</div>
+        </div>
+        <div class="menu-item-price">$44</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Gulf Shrimp &amp; Stone-Ground Grits</div>
+          <div class="menu-item-desc">Wild Gulf shrimp, Anson Mills grits, tasso ham, roasted tomatoes, scallion butter</div>
+        </div>
+        <div class="menu-item-price">$38</div>
+      </div>
+    </div>
+
+    <!-- FROM THE LAND -->
+    <div class="menu-list menu-panel" data-panel="land" style="display:none;">
       <div class="menu-item">
         <div class="menu-item-left">
           <div class="menu-item-name">8 oz Prime Filet Mignon</div>
           <div class="menu-item-desc">Center-cut USDA Prime, truffle compound butter, potato gratin, roasted haricots verts, red wine jus</div>
         </div>
         <div class="menu-item-price">$68</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Grilled Colorado Lamb Chops</div>
+          <div class="menu-item-desc">Double-cut lamb chops, rosemary jus, roasted garlic whipped potato, charred broccolini</div>
+        </div>
+        <div class="menu-item-price">$56</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Roasted Free-Range Half Chicken</div>
+          <div class="menu-item-desc">Herb-brined Springer Mountain chicken, pan jus, roasted root vegetables, crispy fingerlings</div>
+        </div>
+        <div class="menu-item-price">$36</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Wild Mushroom Risotto</div>
+          <div class="menu-item-desc">Carnaroli rice, porcini, maitake, truffle oil, aged Parmigiano-Reggiano, fresh thyme</div>
+          <div class="menu-item-note">Vegetarian</div>
+        </div>
+        <div class="menu-item-price">$32</div>
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="menu-list menu-panel" data-panel="desserts" style="display:none;">
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Classic Crème Brûlée</div>
+          <div class="menu-item-desc">Tahitian vanilla custard, torched sugar, seasonal berries</div>
+        </div>
+        <div class="menu-item-price">$14</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Warm Chocolate Lava Cake</div>
+          <div class="menu-item-desc">Valrhona 70% chocolate, molten center, vanilla bean ice cream, caramel sauce</div>
+          <div class="menu-item-note">Allow 12 minutes</div>
+        </div>
+        <div class="menu-item-price">$16</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Florida Key Lime Tart</div>
+          <div class="menu-item-desc">Graham cracker crust, Key lime curd, toasted meringue, candied lime zest</div>
+        </div>
+        <div class="menu-item-price">$13</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <div class="menu-item-name">Artisan Cheese Board</div>
+          <div class="menu-item-desc">Three curated cheeses, local honey, fig jam, candied walnuts, house-made crackers</div>
+          <div class="menu-item-note">Ask your server for tonight's selection</div>
+        </div>
+        <div class="menu-item-price">$22</div>
       </div>
     </div>
 
@@ -890,10 +1019,15 @@
 
   // Menu tab switching
   const tabs = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-panel');
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
+      const target = tab.dataset.tab;
+      panels.forEach(p => {
+        p.style.display = p.dataset.panel === target ? 'flex' : 'none';
+      });
     });
   });
 </script>
