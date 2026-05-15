@@ -52,6 +52,10 @@
       display: flex; flex-direction: column; justify-content: center;
       border-right: 1px solid #141a14; position: relative; overflow: hidden;
     }
+    .hero-left-photo {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center; opacity: 0.07; display: block;
+    }
     .hero-left::before {
       content: 'ZENITH'; position: absolute; bottom: -20px; left: -10px;
       font-family: 'Barlow Condensed', sans-serif; font-size: 180px; font-weight: 900;
@@ -428,6 +432,10 @@
 <!-- HERO: SPLIT -->
 <div class="hero">
   <div class="hero-left">
+    <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=80"
+      alt=""
+      class="hero-left-photo"
+      onerror="this.style.display='none'">
     <div style="position:relative;z-index:1;">
       <div class="hero-eyebrow">Tampa Bay's #1 Performance Gym</div>
       <h1>Train Like<br/>You Mean<br/><span>It.</span></h1>
@@ -715,10 +723,13 @@
     <p class="section-sub">Every Zenith coach is certified, experienced, and entirely focused on your results. They know your name, your goals, and your last PR.</p>
     <div class="coaches-grid">
       <div class="coach-card">
-        <div class="coach-banner" style="background:linear-gradient(135deg,#111a11,#0a0d0a);">
-          <div class="coach-banner-grid"></div>
-          <div class="coach-specialty-bar">Strength & Powerlifting</div>
-          <div class="coach-initials">MR</div>
+        <div class="coach-banner" style="position:relative;overflow:hidden;background:#0d100d;">
+          <img src="https://images.unsplash.com/photo-7XhgGF5e1xE?auto=format&fit=crop&w=600&q=80"
+            alt="Marcus Rivera — Strength Coach"
+            onerror="this.style.display='none'"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:brightness(0.65);">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,10,8,0.75) 0%,rgba(8,10,8,0.1) 100%);"></div>
+          <div class="coach-specialty-bar" style="position:relative;z-index:1;">Strength & Powerlifting</div>
         </div>
         <div class="coach-body">
           <div class="coach-name">Marcus Rivera</div>
@@ -732,10 +743,13 @@
         </div>
       </div>
       <div class="coach-card">
-        <div class="coach-banner" style="background:linear-gradient(135deg,#111a11,#0a0d0a);">
-          <div class="coach-banner-grid"></div>
-          <div class="coach-specialty-bar">HIIT & Fat Loss</div>
-          <div class="coach-initials">KT</div>
+        <div class="coach-banner" style="position:relative;overflow:hidden;background:#0d100d;">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
+            alt="Kayla Thompson — HIIT Coach"
+            onerror="this.style.display='none'"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:brightness(0.65);">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,10,8,0.75) 0%,rgba(8,10,8,0.1) 100%);"></div>
+          <div class="coach-specialty-bar" style="position:relative;z-index:1;">HIIT & Fat Loss</div>
         </div>
         <div class="coach-body">
           <div class="coach-name">Kayla Thompson</div>
@@ -749,10 +763,13 @@
         </div>
       </div>
       <div class="coach-card">
-        <div class="coach-banner" style="background:linear-gradient(135deg,#111a11,#0a0d0a);">
-          <div class="coach-banner-grid"></div>
-          <div class="coach-specialty-bar">Athletic Performance</div>
-          <div class="coach-initials">DS</div>
+        <div class="coach-banner" style="position:relative;overflow:hidden;background:#0d100d;">
+          <img src="https://images.unsplash.com/photo-VJCKxTvb2ok?auto=format&fit=crop&w=600&q=80"
+            alt="Derek Santos — Performance Coach"
+            onerror="this.style.display='none'"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:brightness(0.65);">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,10,8,0.75) 0%,rgba(8,10,8,0.1) 100%);"></div>
+          <div class="coach-specialty-bar" style="position:relative;z-index:1;">Athletic Performance</div>
         </div>
         <div class="coach-body">
           <div class="coach-name">Derek Santos</div>

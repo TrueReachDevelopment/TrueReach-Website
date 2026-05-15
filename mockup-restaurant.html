@@ -521,6 +521,40 @@
     <h2>Sourced from Florida's<br/><em>Gulf Waters Daily</em></h2>
     <p class="section-sub">Our menu changes with what the sea provides. Every dish is built around peak-season ingredients from local fishermen and farms within 100 miles.</p>
 
+    <!-- Signature dish photos -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px;">
+      <div style="position:relative;border-radius:6px;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-N_Y88TWmGwA?auto=format&fit=crop&w=500&q=80"
+          alt="Gulf Shrimp Ceviche"
+          onerror="this.parentElement.style.background='#18130c'"
+          style="width:100%;height:180px;object-fit:cover;display:block;filter:brightness(0.85);">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:12px 14px;background:linear-gradient(0deg,rgba(10,8,6,0.9),transparent);">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:14px;color:#f5ede0;">Gulf Shrimp Ceviche</div>
+          <div style="font-size:11px;color:rgba(198,155,90,0.6);">Starter · $22</div>
+        </div>
+      </div>
+      <div style="position:relative;border-radius:6px;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-iIjZLcqB1s8?auto=format&fit=crop&w=500&q=80"
+          alt="Whole Roasted Florida Snapper"
+          onerror="this.parentElement.style.background='#18130c'"
+          style="width:100%;height:180px;object-fit:cover;display:block;filter:brightness(0.85);">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:12px 14px;background:linear-gradient(0deg,rgba(10,8,6,0.9),transparent);">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:14px;color:#f5ede0;">Whole Roasted Snapper</div>
+          <div style="font-size:11px;color:rgba(198,155,90,0.6);">Signature · $58</div>
+        </div>
+      </div>
+      <div style="position:relative;border-radius:6px;overflow:hidden;">
+        <img src="https://images.unsplash.com/photo-TACZ-gz4li4?auto=format&fit=crop&w=500&q=80"
+          alt="8oz Prime Filet Mignon"
+          onerror="this.parentElement.style.background='#18130c'"
+          style="width:100%;height:180px;object-fit:cover;display:block;filter:brightness(0.85);">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:12px 14px;background:linear-gradient(0deg,rgba(10,8,6,0.9),transparent);">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:14px;color:#f5ede0;">8 oz Prime Filet</div>
+          <div style="font-size:11px;color:rgba(198,155,90,0.6);">From the Land · $68</div>
+        </div>
+      </div>
+    </div>
+
     <div class="menu-tabs">
       <div class="menu-tab active">Starters</div>
       <div class="menu-tab">Raw Bar</div>
@@ -580,36 +614,14 @@
 <!-- CHEF STORY -->
 <section id="chef" class="chef-section">
   <div class="chef-layout">
-    <div class="chef-visual">
-      <div class="chef-bg"></div>
-      <!-- Chef portrait placeholder -->
-      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;">
-        <!-- Monogram circle -->
-        <div style="width:120px;height:120px;border-radius:50%;
-          background:radial-gradient(circle at 40% 35%, #2a1e0e, #180f06);
-          border:1px solid rgba(198,155,90,0.3);
-          display:flex;align-items:center;justify-content:center;
-          box-shadow:0 0 48px rgba(198,155,90,0.1);
-          position:relative;z-index:1;">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;font-style:italic;color:#c69b5a;line-height:1;">M</span>
-        </div>
-        <!-- Decorative line -->
-        <div style="width:1px;height:40px;background:linear-gradient(180deg,rgba(198,155,90,0.4),transparent);margin-top:0;"></div>
-        <!-- Label -->
-        <div style="font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:rgba(198,155,90,0.4);margin-top:0;">Executive Chef</div>
-        <!-- Subtle plate decoration -->
-        <div style="position:absolute;bottom:120px;left:50%;transform:translateX(-50%);
-          width:200px;height:200px;border-radius:50%;
-          border:1px solid rgba(198,155,90,0.06);pointer-events:none;"></div>
-        <div style="position:absolute;bottom:80px;left:50%;transform:translateX(-50%);
-          width:280px;height:280px;border-radius:50%;
-          border:1px solid rgba(198,155,90,0.03);pointer-events:none;"></div>
-      </div>
-      <!-- Ambient warm glow at center -->
-      <div style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);
-        width:300px;height:300px;border-radius:50%;
-        background:radial-gradient(circle,rgba(198,155,90,0.07) 0%,transparent 70%);
-        pointer-events:none;"></div>
+    <div class="chef-visual" style="overflow:hidden;">
+      <!-- Real chef photo -->
+      <img src="https://images.unsplash.com/photo-Cjb5C2DKXUs?auto=format&fit=crop&w=800&q=80"
+        alt="Chef Marco Deluca in the kitchen"
+        onerror="this.style.display='none'"
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+      <!-- Dark gradient overlay so quote text is readable -->
+      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,8,6,0.95) 0%,rgba(10,8,6,0.45) 50%,rgba(10,8,6,0.2) 100%);"></div>
       <div class="chef-quote">
         <div class="chef-quote-text">"Every plate that leaves my kitchen should feel like it was made just for you — because it was."</div>
         <div class="chef-attribution">— Chef Marco Deluca, Executive Chef</div>
@@ -643,19 +655,31 @@
 
 <!-- EXPERIENCE PANELS -->
 <div class="mood-grid">
-  <div class="mood-panel sunset">
-    <span class="mood-icon">🌅</span>
-    <div class="mood-tag">Nightly Ritual</div>
-    <div class="mood-title">Watch the Sun<br/>Set Over <em>the Bay</em></div>
-    <p class="mood-desc">Every table in our dining room faces Tampa Bay. Our open-air terrace is positioned perfectly — arrive at 7:00 and you'll watch the sun descend into the water while your first course is served.</p>
-    <div class="mood-detail">Terrace seating available by request · First-come on walk-ins</div>
+  <div class="mood-panel sunset" style="position:relative;overflow:hidden;">
+    <img src="https://images.unsplash.com/photo-1H30uRC1plc?auto=format&fit=crop&w=900&q=80"
+      alt="Waterfront dining at sunset"
+      onerror="this.style.display='none'"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0.18;">
+    <div style="position:relative;z-index:1;">
+      <span class="mood-icon">🌅</span>
+      <div class="mood-tag">Nightly Ritual</div>
+      <div class="mood-title">Watch the Sun<br/>Set Over <em>the Bay</em></div>
+      <p class="mood-desc">Every table in our dining room faces Tampa Bay. Our open-air terrace is positioned perfectly — arrive at 7:00 and you'll watch the sun descend into the water while your first course is served.</p>
+      <div class="mood-detail">Terrace seating available by request · First-come on walk-ins</div>
+    </div>
   </div>
-  <div class="mood-panel jazz">
-    <span class="mood-icon">🎷</span>
-    <div class="mood-tag">Live Music</div>
-    <div class="mood-title">Jazz Every<br/><em>Friday & Saturday</em></div>
-    <p class="mood-desc">Our resident quartet performs from 7 – 10 PM every Friday and Saturday evening. Classic jazz, bossa nova, and contemporary standards fill the dining room. Arrive early for seats closest to the stage.</p>
-    <div class="mood-detail">No cover charge · Open to all diners · Reservations recommended</div>
+  <div class="mood-panel jazz" style="position:relative;overflow:hidden;">
+    <img src="https://images.unsplash.com/photo-ZgREXhl8ER0?auto=format&fit=crop&w=900&q=80"
+      alt="Restaurant interior ambiance"
+      onerror="this.style.display='none'"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0.18;">
+    <div style="position:relative;z-index:1;">
+      <span class="mood-icon">🎷</span>
+      <div class="mood-tag">Live Music</div>
+      <div class="mood-title">Jazz Every<br/><em>Friday & Saturday</em></div>
+      <p class="mood-desc">Our resident quartet performs from 7 – 10 PM every Friday and Saturday evening. Classic jazz, bossa nova, and contemporary standards fill the dining room. Arrive early for seats closest to the stage.</p>
+      <div class="mood-detail">No cover charge · Open to all diners · Reservations recommended</div>
+    </div>
   </div>
 </div>
 
