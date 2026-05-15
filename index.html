@@ -325,6 +325,7 @@
   <a href="#why" onclick="closeMobile()">Why Us</a>
   <a href="#process" onclick="closeMobile()">Process</a>
   <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
 </div>
 
@@ -341,6 +342,7 @@
       <li><a href="#why" class="nav-link">Why Us</a></li>
       <li><a href="#process" class="nav-link">Process</a></li>
       <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+      <li><a href="#faq" class="nav-link">FAQ</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
 
@@ -805,6 +807,138 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq" class="relative py-24" style="background:#060c1a;">
+  <div class="absolute inset-0 pointer-events-none" style="background:linear-gradient(180deg,#02040a 0%,transparent 8%,transparent 92%,#02040a 100%);"></div>
+
+  <div class="max-w-3xl mx-auto px-6 relative z-10">
+
+    <div class="text-center mb-14 fade-up">
+      <span class="tag mb-4 inline-flex">FAQ</span>
+      <h2 class="font-display font-extrabold tracking-tightest leading-none mb-4" style="font-size:clamp(28px,4vw,46px);">
+        Questions We Get<br/><span class="grad-text">All the Time</span>
+      </h2>
+      <p class="text-muted text-[15px] leading-body max-w-md mx-auto">Everything you need to know before reaching out. Don't see your question? Just ask.</p>
+    </div>
+
+    <div id="faq-list" style="display:flex;flex-direction:column;gap:0;">
+
+      <!-- FAQ items -->
+      <div class="faq-item" style="border-bottom:1px solid #14213a;">
+        <button class="faq-q" onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#e6ecf5;letter-spacing:-0.01em;">How quickly can you build my website?</span>
+          <span class="faq-icon" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(30,94,245,0.1);border:1px solid rgba(30,94,245,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;color:#5b8ff9;transition:transform 0.25s,background 0.25s;">+</span>
+        </button>
+        <div class="faq-a" style="display:none;padding-bottom:22px;">
+          <p style="font-size:14.5px;color:#7585a0;line-height:1.75;margin:0;">Most websites are delivered in as little as <strong style="color:#e6ecf5;">1 business day.</strong> Once we have your content, logo, and direction, we move fast. No drawn-out back-and-forth — just focused work and a fast handoff.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #14213a;">
+        <button class="faq-q" onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#e6ecf5;letter-spacing:-0.01em;">Do you work with businesses outside of Florida?</span>
+          <span class="faq-icon" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(30,94,245,0.1);border:1px solid rgba(30,94,245,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;color:#5b8ff9;transition:transform 0.25s,background 0.25s;">+</span>
+        </button>
+        <div class="faq-a" style="display:none;padding-bottom:22px;">
+          <p style="font-size:14.5px;color:#7585a0;line-height:1.75;margin:0;">Yes — we're fully remote and work with clients <strong style="color:#e6ecf5;">anywhere in the United States.</strong> Our roots are in Tampa Bay but geography has never been a barrier. If you have an internet connection and a business that deserves a great website, we're in.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #14213a;">
+        <button class="faq-q" onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#e6ecf5;letter-spacing:-0.01em;">What's included in a website build?</span>
+          <span class="faq-icon" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(30,94,245,0.1);border:1px solid rgba(30,94,245,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;color:#5b8ff9;transition:transform 0.25s,background 0.25s;">+</span>
+        </button>
+        <div class="faq-a" style="display:none;padding-bottom:22px;">
+          <p style="font-size:14.5px;color:#7585a0;line-height:1.75;margin:0 0 12px;">Every website we build includes:</p>
+          <ul style="font-size:14px;color:#7585a0;line-height:1.75;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;">
+            <li style="display:flex;align-items:center;gap:10px;"><span style="width:5px;height:5px;border-radius:50%;background:#1e5ef5;flex-shrink:0;"></span>Custom design tailored to your brand — no templates</li>
+            <li style="display:flex;align-items:center;gap:10px;"><span style="width:5px;height:5px;border-radius:50%;background:#1e5ef5;flex-shrink:0;"></span>Mobile-first, responsive across all devices</li>
+            <li style="display:flex;align-items:center;gap:10px;"><span style="width:5px;height:5px;border-radius:50%;background:#1e5ef5;flex-shrink:0;"></span>Contact forms, booking tools &amp; third-party integrations</li>
+            <li style="display:flex;align-items:center;gap:10px;"><span style="width:5px;height:5px;border-radius:50%;background:#1e5ef5;flex-shrink:0;"></span>Built-in SEO foundation so Google can find you</li>
+            <li style="display:flex;align-items:center;gap:10px;"><span style="width:5px;height:5px;border-radius:50%;background:#1e5ef5;flex-shrink:0;"></span>SSL setup guidance &amp; post-launch support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #14213a;">
+        <button class="faq-q" onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#e6ecf5;letter-spacing:-0.01em;">Do you use templates or page builders?</span>
+          <span class="faq-icon" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(30,94,245,0.1);border:1px solid rgba(30,94,245,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;color:#5b8ff9;transition:transform 0.25s,background 0.25s;">+</span>
+        </button>
+        <div class="faq-a" style="display:none;padding-bottom:22px;">
+          <p style="font-size:14.5px;color:#7585a0;line-height:1.75;margin:0;">Never. Every site is <strong style="color:#e6ecf5;">custom-built from scratch.</strong> No Squarespace, no Wix, no WordPress page builders that bloat your site and slow it down. Clean code means faster load times, better SEO, and a site that's actually yours.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #14213a;">
+        <button class="faq-q" onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#e6ecf5;letter-spacing:-0.01em;">What is SEO and why does it matter?</span>
+          <span class="faq-icon" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(30,94,245,0.1);border:1px solid rgba(30,94,245,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;color:#5b8ff9;transition:transform 0.25s,background 0.25s;">+</span>
+        </button>
+        <div class="faq-a" style="display:none;padding-bottom:22px;">
+          <p style="font-size:14.5px;color:#7585a0;line-height:1.75;margin:0;">SEO (Search Engine Optimization) determines whether your site appears when someone Googles your services. Without it, even a beautiful website can sit invisible. We optimize every site we build with a solid SEO foundation, and offer <strong style="color:#e6ecf5;">dedicated SEO plans</strong> for businesses that want to dominate local and national search results.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #14213a;">
+        <button class="faq-q" onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#e6ecf5;letter-spacing:-0.01em;">What does a maintenance plan include?</span>
+          <span class="faq-icon" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(30,94,245,0.1);border:1px solid rgba(30,94,245,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;color:#5b8ff9;transition:transform 0.25s,background 0.25s;">+</span>
+        </button>
+        <div class="faq-a" style="display:none;padding-bottom:22px;">
+          <p style="font-size:14.5px;color:#7585a0;line-height:1.75;margin:0;">Our maintenance plans keep your site running at full health. That includes <strong style="color:#e6ecf5;">security monitoring, software updates, daily backups, uptime monitoring, content edits,</strong> and priority support if anything ever goes wrong. You focus on running your business — we'll handle the rest.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #14213a;">
+        <button class="faq-q" onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#e6ecf5;letter-spacing:-0.01em;">Do you require long-term contracts?</span>
+          <span class="faq-icon" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(30,94,245,0.1);border:1px solid rgba(30,94,245,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;color:#5b8ff9;transition:transform 0.25s,background 0.25s;">+</span>
+        </button>
+        <div class="faq-a" style="display:none;padding-bottom:22px;">
+          <p style="font-size:14.5px;color:#7585a0;line-height:1.75;margin:0;">No. Website builds are a <strong style="color:#e6ecf5;">single project engagement</strong> — no strings attached. Maintenance plans are month-to-month and can be cancelled at any time. We'd rather earn your continued business than lock you into something.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#e6ecf5;letter-spacing:-0.01em;">How do I get started?</span>
+          <span class="faq-icon" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(30,94,245,0.1);border:1px solid rgba(30,94,245,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;color:#5b8ff9;transition:transform 0.25s,background 0.25s;">+</span>
+        </button>
+        <div class="faq-a" style="display:none;padding-bottom:22px;">
+          <p style="font-size:14.5px;color:#7585a0;line-height:1.75;margin:0;">Fill out the contact form below or send us a message directly. We'll get back to you fast, set up a <strong style="color:#e6ecf5;">free consultation,</strong> and figure out exactly what you need. No pressure, no hard sell — just an honest conversation about your goals.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-12">
+      <p style="font-size:14px;color:#7585a0;margin-bottom:20px;">Still have questions? We're happy to chat.</p>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;background:#1e5ef5;color:#fff;font-weight:600;font-size:14px;padding:13px 28px;border-radius:6px;text-decoration:none;box-shadow:0 0 0 1px rgba(30,94,245,0.5),0 4px 20px rgba(30,94,245,0.25);">Ask Us Anything →</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const icon = btn.querySelector('.faq-icon');
+    const isOpen = answer.style.display === 'block';
+    // Close all
+    document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
+    document.querySelectorAll('.faq-icon').forEach(i => { i.textContent = '+'; i.style.transform = 'rotate(0deg)'; i.style.background = 'rgba(30,94,245,0.1)'; });
+    // Open this one if it was closed
+    if (!isOpen) {
+      answer.style.display = 'block';
+      icon.textContent = '×';
+      icon.style.transform = 'rotate(90deg)';
+      icon.style.background = 'rgba(30,94,245,0.2)';
+    }
+  }
+</script>
+
 <!-- CONTACT -->
 <section id="contact" class="relative py-24" style="background:#02040a;">
   <div class="absolute pointer-events-none" style="width:700px;height:600px;bottom:-100px;left:-200px;background:radial-gradient(circle,rgba(30,94,245,0.07) 0%,transparent 65%);border-radius:50%;"></div>
@@ -919,6 +1053,7 @@
         <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;">
           <li><a href="#why" style="font-size:13px;color:#7585a0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5b8ff9'" onmouseout="this.style.color='#7585a0'">Why TrueReach</a></li>
           <li><a href="#process" style="font-size:13px;color:#7585a0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5b8ff9'" onmouseout="this.style.color='#7585a0'">Our Process</a></li>
+          <li><a href="#faq" style="font-size:13px;color:#7585a0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5b8ff9'" onmouseout="this.style.color='#7585a0'">FAQ</a></li>
           <li><a href="#contact" style="font-size:13px;color:#7585a0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5b8ff9'" onmouseout="this.style.color='#7585a0'">Get a Quote</a></li>
           <li><a href="mailto:dylan@truereachdevelopment.com" style="font-size:13px;color:#7585a0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5b8ff9'" onmouseout="this.style.color='#7585a0'">Contact</a></li>
         </ul>
