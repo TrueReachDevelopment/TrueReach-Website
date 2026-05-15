@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Storm Shield Roofing | Tampa Bay's Trusted Roofers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Barlow:wght@700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark:    '#0a0c0f',
+            surface: '#111418',
+            raised:  '#181c22',
+            border:  '#242830',
+            orange:  '#e86a2a',
+            'orange-hi': '#f07d40',
+            muted:   '#8a929e',
+            dim:     '#454d58',
+          },
+          fontFamily: {
+            display: ['Barlow', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #0a0c0f; color: #eef0f4; overflow-x: hidden; }
+    .grad-text { background: linear-gradient(135deg, #f07d40, #e86a2a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .btn-orange { display: inline-flex; align-items: center; gap: 8px; background: #e86a2a; color: #fff; font-weight: 700; font-size: 15px; padding: 13px 28px; border-radius: 6px; text-decoration: none; transition: background 0.2s, transform 0.2s; box-shadow: 0 4px 24px rgba(232,106,42,0.3); }
+    .btn-orange:hover { background: #f07d40; transform: translateY(-2px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #8a929e; font-weight: 600; font-size: 15px; padding: 13px 28px; border-radius: 6px; border: 1px solid #242830; text-decoration: none; transition: all 0.2s; }
+    .btn-outline:hover { border-color: #e86a2a; color: #f07d40; }
+    .nav-link { color: #8a929e; font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+    .nav-link:hover { color: #eef0f4; }
+    #nav.scrolled { background: rgba(10,12,15,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid #242830; }
+    .service-card { background: #111418; border: 1px solid #242830; border-radius: 10px; padding: 28px; transition: border-color 0.25s, transform 0.25s; }
+    .service-card:hover { border-color: rgba(232,106,42,0.4); transform: translateY(-3px); }
+    .review-card { background: #111418; border: 1px solid #242830; border-radius: 10px; padding: 24px; }
+    .stars { color: #e86a2a; font-size: 14px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 py-5 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3 no-underline">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center font-display font-black text-sm" style="background:linear-gradient(135deg,#e86a2a,#c8521a);color:#fff;">SS</div>
+      <span class="font-display font-bold text-[16px] text-white tracking-tight">Storm Shield <span style="color:#e86a2a;">Roofing</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#why" class="nav-link">Why Us</a>
+      <a href="#reviews" class="nav-link">Reviews</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <a href="#contact" class="btn-orange hidden md:inline-flex" style="padding:10px 22px;font-size:14px;">Free Estimate</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0" style="background: linear-gradient(135deg, #0a0c0f 0%, #111418 50%, #0f1115 100%);"></div>
+  <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(232,106,42,0.1) 0%,transparent 65%);"></div>
+  <!-- Roof silhouette graphic -->
+  <div class="absolute bottom-0 right-0 left-0 h-48 pointer-events-none opacity-5">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none" class="w-full h-full">
+      <path d="M0,200 L0,120 L360,20 L720,120 L1080,20 L1440,120 L1440,200 Z" fill="#e86a2a"/>
+    </svg>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded text-xs font-bold uppercase tracking-widest" style="background:rgba(232,106,42,0.1);border:1px solid rgba(232,106,42,0.25);color:#e86a2a;">
+          ⭐ Rated #1 in Tampa Bay
+        </div>
+        <h1 class="font-display font-black leading-none mb-6" style="font-size:clamp(40px,5.5vw,68px);letter-spacing:-0.02em;">
+          Tampa Bay's<br/><span class="grad-text">Trusted Roofing</span><br/>Experts
+        </h1>
+        <p class="text-[17px] mb-8 leading-relaxed" style="color:#8a929e;max-width:460px;">Storm damage, full replacements, or routine inspections — we protect your home with honest work, fair pricing, and a lifetime craftsmanship warranty.</p>
+        <div class="flex flex-wrap gap-3 mb-10">
+          <a href="#contact" class="btn-orange">Get a Free Estimate &rarr;</a>
+          <a href="#services" class="btn-outline">Our Services</a>
+        </div>
+        <div class="flex gap-8 pt-8 border-t border-border">
+          <div>
+            <div class="font-display font-black text-2xl text-white">500+</div>
+            <div class="text-xs text-dim uppercase tracking-widest mt-1">Roofs Completed</div>
+          </div>
+          <div>
+            <div class="font-display font-black text-2xl text-white">15 Yrs</div>
+            <div class="text-xs text-dim uppercase tracking-widest mt-1">Experience</div>
+          </div>
+          <div>
+            <div class="font-display font-black text-2xl text-white">Lifetime</div>
+            <div class="text-xs text-dim uppercase tracking-widest mt-1">Warranty</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero card -->
+      <div class="hidden lg:block">
+        <div class="rounded-xl overflow-hidden" style="background:#111418;border:1px solid #242830;">
+          <div style="background:linear-gradient(135deg,#1a1e24,#111418);padding:36px;text-align:center;">
+            <div style="font-size:80px;margin-bottom:16px;">🏠</div>
+            <div style="font-size:14px;color:#8a929e;margin-bottom:20px;">Storm Damage Assessment</div>
+            <div style="background:#0a0c0f;border:1px solid #242830;border-radius:8px;padding:20px;text-align:left;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #242830;">
+                <span style="font-size:13px;color:#8a929e;">Inspection Status</span>
+                <span style="font-size:12px;font-weight:700;color:#22c55e;background:rgba(34,197,94,0.1);padding:3px 10px;border-radius:20px;">✓ Complete</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:13px;color:#8a929e;">Damage Level</span>
+                <span style="font-size:13px;font-weight:600;color:#e86a2a;">Moderate</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:13px;color:#8a929e;">Insurance Eligible</span>
+                <span style="font-size:13px;font-weight:600;color:#eef0f4;">Yes</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-size:13px;color:#8a929e;">Est. Timeline</span>
+                <span style="font-size:13px;font-weight:600;color:#eef0f4;">1–2 Days</span>
+              </div>
+            </div>
+            <a href="#contact" class="btn-orange" style="margin-top:16px;width:100%;justify-content:center;">Book Free Inspection</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-24" style="background:#111418;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded text-xs font-bold uppercase tracking-widest" style="background:rgba(232,106,42,0.1);border:1px solid rgba(232,106,42,0.25);color:#e86a2a;">What We Do</div>
+      <h2 class="font-display font-black leading-none mb-4" style="font-size:clamp(28px,4vw,44px);letter-spacing:-0.02em;">Full-Service Roofing<br/>for Tampa Bay Homes</h2>
+      <p style="color:#8a929e;font-size:15px;max-width:480px;margin:0 auto;line-height:1.75;">From emergency repairs to complete replacements — we handle every roofing need with the skill and honesty Tampa Bay homeowners deserve.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="service-card">
+        <div class="text-3xl mb-4">🔨</div>
+        <h3 class="font-display font-bold text-base mb-2">Roof Repair</h3>
+        <p class="text-sm leading-relaxed" style="color:#8a929e;">Fast, reliable repairs for leaks, missing shingles, and storm damage. Most repairs completed same day.</p>
+      </div>
+      <div class="service-card">
+        <div class="text-3xl mb-4">🏗️</div>
+        <h3 class="font-display font-bold text-base mb-2">Full Replacement</h3>
+        <p class="text-sm leading-relaxed" style="color:#8a929e;">Complete tear-off and replacement with premium materials. Lifetime craftsmanship warranty included.</p>
+      </div>
+      <div class="service-card">
+        <div class="text-3xl mb-4">🌩️</div>
+        <h3 class="font-display font-bold text-base mb-2">Storm Damage</h3>
+        <p class="text-sm leading-relaxed" style="color:#8a929e;">Emergency response after hurricanes and severe storms. We work directly with your insurance company.</p>
+      </div>
+      <div class="service-card">
+        <div class="text-3xl mb-4">🔍</div>
+        <h3 class="font-display font-bold text-base mb-2">Inspections</h3>
+        <p class="text-sm leading-relaxed" style="color:#8a929e;">Free comprehensive roof inspections with detailed written reports. Perfect before buying or selling a home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="py-24" style="background:#0a0c0f;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded text-xs font-bold uppercase tracking-widest" style="background:rgba(232,106,42,0.1);border:1px solid rgba(232,106,42,0.25);color:#e86a2a;">Why Storm Shield</div>
+        <h2 class="font-display font-black leading-none mb-5" style="font-size:clamp(28px,4vw,42px);letter-spacing:-0.02em;">Tampa Bay Homeowners<br/>Trust Us For a Reason</h2>
+        <p style="color:#8a929e;font-size:15px;line-height:1.8;margin-bottom:16px;">We've been protecting Tampa Bay homes for over 15 years. No subcontractors, no shortcuts — every job is handled by our licensed, background-checked crew from start to finish.</p>
+        <p style="color:#8a929e;font-size:15px;line-height:1.8;margin-bottom:32px;">We're fully licensed and insured in Florida, and we handle all insurance claims paperwork so you don't have to deal with the hassle.</p>
+        <div class="grid grid-cols-2 gap-4">
+          <div style="background:#111418;border:1px solid #242830;border-radius:8px;padding:20px;">
+            <div class="font-display font-black text-2xl mb-1" style="color:#e86a2a;">A+</div>
+            <div class="text-xs text-dim uppercase tracking-widest">BBB Rating</div>
+          </div>
+          <div style="background:#111418;border:1px solid #242830;border-radius:8px;padding:20px;">
+            <div class="font-display font-black text-2xl mb-1" style="color:#e86a2a;">4.9★</div>
+            <div class="text-xs text-dim uppercase tracking-widest">Google Rating</div>
+          </div>
+          <div style="background:#111418;border:1px solid #242830;border-radius:8px;padding:20px;">
+            <div class="font-display font-black text-2xl mb-1" style="color:#e86a2a;">FL Lic.</div>
+            <div class="text-xs text-dim uppercase tracking-widest">Licensed & Insured</div>
+          </div>
+          <div style="background:#111418;border:1px solid #242830;border-radius:8px;padding:20px;">
+            <div class="font-display font-black text-2xl mb-1" style="color:#e86a2a;">24/7</div>
+            <div class="text-xs text-dim uppercase tracking-widest">Emergency Response</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#111418;border:1px solid #242830;border-radius:12px;padding:32px;">
+        <div class="text-sm font-semibold mb-4" style="color:#8a929e;">Our Process</div>
+        <div class="flex flex-col gap-4">
+          <div class="flex gap-4 items-start">
+            <div class="w-8 h-8 rounded-full font-display font-black text-sm flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#e86a2a,#c8521a);color:#fff;min-width:32px;">1</div>
+            <div><div class="font-semibold text-sm mb-1">Free Inspection</div><div class="text-sm" style="color:#8a929e;">We assess your roof and document all damage at no cost.</div></div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div class="w-8 h-8 rounded-full font-display font-black text-sm flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#e86a2a,#c8521a);color:#fff;min-width:32px;">2</div>
+            <div><div class="font-semibold text-sm mb-1">Honest Quote</div><div class="text-sm" style="color:#8a929e;">Clear pricing with no hidden fees — what we quote is what you pay.</div></div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div class="w-8 h-8 rounded-full font-display font-black text-sm flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#e86a2a,#c8521a);color:#fff;min-width:32px;">3</div>
+            <div><div class="font-semibold text-sm mb-1">Expert Installation</div><div class="text-sm" style="color:#8a929e;">Our licensed crew completes the job cleanly and on schedule.</div></div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div class="w-8 h-8 rounded-full font-display font-black text-sm flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#e86a2a,#c8521a);color:#fff;min-width:32px;">4</div>
+            <div><div class="font-semibold text-sm mb-1">Final Walkthrough</div><div class="text-sm" style="color:#8a929e;">We inspect every inch before we leave and hand you your warranty.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="py-24" style="background:#111418;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded text-xs font-bold uppercase tracking-widest" style="background:rgba(232,106,42,0.1);border:1px solid rgba(232,106,42,0.25);color:#e86a2a;">Reviews</div>
+      <h2 class="font-display font-black leading-none" style="font-size:clamp(28px,4vw,44px);letter-spacing:-0.02em;">What Tampa Bay<br/>Homeowners Are Saying</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="text-sm leading-relaxed mb-4" style="color:#8a929e;">"After Hurricane Idalia, Storm Shield had my roof repaired within 48 hours. They handled everything with my insurance and I paid nothing out of pocket. Incredible team."</p>
+        <div class="font-semibold text-sm">Mike T. — St. Petersburg, FL</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="text-sm leading-relaxed mb-4" style="color:#8a929e;">"Best roofing company in Tampa. Got 4 quotes and Storm Shield was the most honest and transparent. Job was done in one day and my roof looks brand new."</p>
+        <div class="font-semibold text-sm">Sandra R. — Tampa, FL</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="text-sm leading-relaxed mb-4" style="color:#8a929e;">"Used them for a full replacement before selling my house. They finished ahead of schedule and the new owners love it. Will recommend to everyone I know."</p>
+        <div class="font-semibold text-sm">James K. — Clearwater, FL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24" style="background:#0a0c0f;">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded text-xs font-bold uppercase tracking-widest" style="background:rgba(232,106,42,0.1);border:1px solid rgba(232,106,42,0.25);color:#e86a2a;">Free Estimate</div>
+    <h2 class="font-display font-black leading-none mb-5" style="font-size:clamp(28px,4vw,48px);letter-spacing:-0.02em;">Ready for a Roof<br/>You Can Count On?</h2>
+    <p style="color:#8a929e;font-size:16px;line-height:1.75;margin-bottom:40px;">Get a free, no-pressure estimate from Tampa Bay's most trusted roofers. We respond within 2 hours.</p>
+    <div style="background:#111418;border:1px solid #242830;border-radius:12px;padding:36px;text-align:left;">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color:#8a929e;">Full Name</label>
+          <input type="text" placeholder="John Smith" class="w-full px-4 py-3 rounded-lg text-sm outline-none" style="background:#0a0c0f;border:1px solid #242830;color:#eef0f4;" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color:#8a929e;">Phone Number</label>
+          <input type="tel" placeholder="(727) 555-0100" class="w-full px-4 py-3 rounded-lg text-sm outline-none" style="background:#0a0c0f;border:1px solid #242830;color:#eef0f4;" />
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color:#8a929e;">Service Needed</label>
+        <select class="w-full px-4 py-3 rounded-lg text-sm outline-none" style="background:#0a0c0f;border:1px solid #242830;color:#eef0f4;">
+          <option>Select a service...</option>
+          <option>Roof Repair</option>
+          <option>Full Replacement</option>
+          <option>Storm Damage</option>
+          <option>Inspection</option>
+        </select>
+      </div>
+      <div class="mb-6">
+        <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color:#8a929e;">Tell Us About Your Roof</label>
+        <textarea rows="3" placeholder="Describe the issue or what you need..." class="w-full px-4 py-3 rounded-lg text-sm outline-none resize-none" style="background:#0a0c0f;border:1px solid #242830;color:#eef0f4;"></textarea>
+      </div>
+      <a href="#" class="btn-orange w-full justify-center" style="width:100%;">Request Free Estimate &rarr;</a>
+    </div>
+    <div class="flex flex-wrap justify-center gap-8 mt-10">
+      <div class="text-center"><div class="font-display font-bold text-lg" style="color:#e86a2a;">📞 (813) 555-0147</div><div class="text-xs text-dim mt-1">Call or Text Anytime</div></div>
+      <div class="text-center"><div class="font-display font-bold text-lg" style="color:#e86a2a;">📍 Tampa, FL</div><div class="text-xs text-dim mt-1">Serving All of Tampa Bay</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#111418;border-top:1px solid #242830;padding:32px 0;">
+  <div class="max-w-6xl mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center font-display font-black text-xs" style="background:linear-gradient(135deg,#e86a2a,#c8521a);color:#fff;">SS</div>
+      <span class="font-display font-bold text-sm">Storm Shield <span style="color:#e86a2a;">Roofing</span></span>
+    </div>
+    <div class="text-xs" style="color:#454d58;">&copy; 2026 Storm Shield Roofing. All rights reserved. | Tampa Bay, FL</div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+</script>
+</body>
+</html>

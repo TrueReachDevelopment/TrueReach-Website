@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marea Waterfront Dining — Tampa Bay's Premier Waterfront Restaurant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0d0a06; color: #f0e8d8; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+      background: rgba(13,10,6,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(198,155,90,0.12);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600;
+      color: #c69b5a; letter-spacing: 0.04em;
+    }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
+      font-size: 13px; color: rgba(240,232,216,0.65); text-decoration: none;
+      letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #c69b5a; }
+    .nav-cta {
+      background: transparent; border: 1px solid #c69b5a; color: #c69b5a;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 10px 24px; border-radius: 2px; text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: #c69b5a; color: #0d0a06; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 50%, rgba(198,155,90,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(198,155,90,0.04) 0%, transparent 60%),
+        linear-gradient(180deg, #0d0a06 0%, #120e08 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(198,155,90,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(198,155,90,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: #c69b5a; margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 32px; height: 1px; background: #c69b5a;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 5vw, 68px);
+      font-weight: 600; line-height: 1.08; letter-spacing: -0.01em;
+      color: #f5ede0; margin-bottom: 24px;
+    }
+    h1 em { font-style: italic; color: #c69b5a; }
+    .hero-sub {
+      font-size: 16px; color: rgba(240,232,216,0.55); line-height: 1.8;
+      margin-bottom: 40px; max-width: 480px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: #c69b5a; color: #0d0a06; font-weight: 700; font-size: 13px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 14px 32px; border-radius: 2px; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline {
+      background: transparent; border: 1px solid rgba(198,155,90,0.35); color: #c69b5a;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 14px 32px; border-radius: 2px; text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: #c69b5a; }
+
+    /* Hero visual — reservation card */
+    .hero-visual {
+      display: flex; justify-content: center;
+    }
+    .res-card {
+      background: #18130c; border: 1px solid rgba(198,155,90,0.2);
+      border-radius: 12px; padding: 32px; width: 340px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(198,155,90,0.08);
+    }
+    .res-card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px; padding-bottom: 20px;
+      border-bottom: 1px solid rgba(198,155,90,0.1);
+    }
+    .res-card-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #f5ede0; }
+    .res-status {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      color: #5dbf6e; background: rgba(93,191,110,0.1);
+      border: 1px solid rgba(93,191,110,0.2); padding: 4px 10px; border-radius: 3px;
+    }
+    .res-date-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;
+    }
+    .res-field label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(198,155,90,0.5); display: block; margin-bottom: 6px;
+    }
+    .res-field .val {
+      font-size: 15px; color: #f5ede0; font-weight: 500;
+    }
+    .res-table-row {
+      background: rgba(198,155,90,0.06); border: 1px solid rgba(198,155,90,0.12);
+      border-radius: 6px; padding: 14px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .res-table-info { font-size: 13px; color: rgba(240,232,216,0.7); }
+    .res-table-num { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #c69b5a; font-weight: 600; }
+    .res-divider { height: 1px; background: rgba(198,155,90,0.1); margin-bottom: 20px; }
+    .res-note {
+      font-size: 12px; color: rgba(240,232,216,0.4); line-height: 1.6;
+      font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 14px;
+    }
+    .res-confirm-btn {
+      display: block; text-align: center; margin-top: 20px;
+      background: #c69b5a; color: #0d0a06; font-weight: 700; font-size: 12px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 12px; border-radius: 4px; text-decoration: none;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: #120e08; border-top: 1px solid rgba(198,155,90,0.1); border-bottom: 1px solid rgba(198,155,90,0.1);
+      padding: 40px 48px;
+    }
+    .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    .stat-item { text-align: center; padding: 0 24px; }
+    .stat-item + .stat-item { border-left: 1px solid rgba(198,155,90,0.12); }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600;
+      color: #c69b5a; line-height: 1; margin-bottom: 8px;
+    }
+    .stat-label { font-size: 12px; color: rgba(240,232,216,0.45); letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* MENU SECTION */
+    section { padding: 100px 48px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: #c69b5a; margin-bottom: 16px;
+    }
+    .section-tag::before { content: ''; display: block; width: 24px; height: 1px; background: #c69b5a; }
+    h2 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 50px);
+      font-weight: 600; line-height: 1.1; color: #f5ede0; margin-bottom: 16px;
+    }
+    h2 em { font-style: italic; color: #c69b5a; }
+    .section-sub { font-size: 15px; color: rgba(240,232,216,0.5); line-height: 1.75; max-width: 540px; }
+
+    /* Menu grid */
+    .menu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 56px; }
+    .menu-item {
+      background: #120e08; padding: 36px 32px;
+      border: 1px solid rgba(198,155,90,0.08);
+      position: relative;
+      transition: border-color 0.25s;
+    }
+    .menu-item:hover { border-color: rgba(198,155,90,0.25); }
+    .menu-category {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(198,155,90,0.5); margin-bottom: 12px;
+    }
+    .menu-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #f5ede0; margin-bottom: 10px; }
+    .menu-desc { font-size: 13px; color: rgba(240,232,216,0.45); line-height: 1.7; margin-bottom: 20px; }
+    .menu-price { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #c69b5a; }
+    .menu-price span { font-size: 12px; color: rgba(198,155,90,0.5); }
+
+    /* EXPERIENCE */
+    .experience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 0; }
+    .exp-left { }
+    .exp-photo {
+      background: #18130c; border: 1px solid rgba(198,155,90,0.12); border-radius: 8px;
+      aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+    .exp-photo-inner {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse 80% 80% at 50% 60%, rgba(198,155,90,0.06) 0%, transparent 70%);
+      font-family: 'Cormorant Garamond', serif; font-size: 80px; opacity: 0.15;
+    }
+    .exp-right { }
+    .exp-features { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+    .exp-feat {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px 24px; background: #120e08;
+      border: 1px solid rgba(198,155,90,0.08); border-radius: 6px;
+    }
+    .exp-feat-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: rgba(198,155,90,0.08); border: 1px solid rgba(198,155,90,0.15);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .exp-feat-title { font-size: 15px; font-weight: 600; color: #f0e8d8; margin-bottom: 4px; }
+    .exp-feat-desc { font-size: 13px; color: rgba(240,232,216,0.45); line-height: 1.6; }
+
+    /* PRIVATE EVENTS */
+    .events-section { background: #120e08; }
+    .events-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+    .event-card {
+      padding: 36px 28px; border: 1px solid rgba(198,155,90,0.1); border-radius: 6px;
+      background: #18130c; position: relative; overflow: hidden;
+    }
+    .event-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, #c69b5a, transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .event-card:hover::after { opacity: 1; }
+    .event-icon { font-size: 28px; margin-bottom: 20px; }
+    .event-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #f5ede0; margin-bottom: 12px; }
+    .event-desc { font-size: 13px; color: rgba(240,232,216,0.45); line-height: 1.75; margin-bottom: 24px; }
+    .event-detail {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: rgba(198,155,90,0.7); margin-bottom: 8px;
+    }
+    .event-detail::before { content: '—'; color: rgba(198,155,90,0.3); }
+
+    /* REVIEWS */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+    .review-card {
+      background: #120e08; border: 1px solid rgba(198,155,90,0.08);
+      border-radius: 6px; padding: 32px 28px;
+    }
+    .review-stars { color: #c69b5a; font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
+    .review-text {
+      font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic;
+      color: rgba(240,232,216,0.7); line-height: 1.7; margin-bottom: 20px;
+    }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(198,155,90,0.12); border: 1px solid rgba(198,155,90,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 16px; color: #c69b5a;
+    }
+    .reviewer-name { font-size: 14px; font-weight: 600; color: #f5ede0; }
+    .reviewer-detail { font-size: 12px; color: rgba(240,232,216,0.35); }
+
+    /* RESERVATION */
+    .reservation-section { }
+    .res-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 56px; }
+    .res-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #f5ede0; margin-bottom: 20px; }
+    .res-hours { margin-bottom: 32px; }
+    .res-hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; border-bottom: 1px solid rgba(198,155,90,0.08);
+      font-size: 14px;
+    }
+    .res-hours-day { color: rgba(240,232,216,0.5); }
+    .res-hours-time { color: #f0e8d8; font-weight: 500; }
+    .res-hours-time.closed { color: rgba(240,232,216,0.25); }
+    .res-contact-items { display: flex; flex-direction: column; gap: 12px; }
+    .res-contact-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: rgba(240,232,216,0.6); }
+    .res-contact-icon { font-size: 16px; }
+
+    .res-form {
+      background: #120e08; border: 1px solid rgba(198,155,90,0.12);
+      border-radius: 8px; padding: 40px 36px;
+    }
+    .res-form h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #f5ede0; margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(198,155,90,0.6); margin-bottom: 8px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: #18130c; border: 1px solid rgba(198,155,90,0.15);
+      border-radius: 4px; padding: 12px 16px; font-size: 14px; color: #f0e8d8;
+      outline: none; font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: rgba(198,155,90,0.4);
+    }
+    .form-group select option { background: #18130c; }
+    .form-group textarea { resize: none; height: 90px; }
+    .form-submit {
+      width: 100%; background: #c69b5a; color: #0d0a06;
+      font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+      border: none; padding: 15px; border-radius: 4px; cursor: pointer;
+      margin-top: 8px; transition: opacity 0.2s;
+    }
+    .form-submit:hover { opacity: 0.88; }
+
+    /* FOOTER */
+    footer {
+      background: #080603; border-top: 1px solid rgba(198,155,90,0.1);
+      padding: 60px 48px 40px;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #c69b5a; margin-bottom: 12px; }
+    .footer-tagline { font-size: 13px; color: rgba(240,232,216,0.3); max-width: 260px; line-height: 1.6; font-style: italic; font-family: 'Cormorant Garamond', serif; }
+    .footer-links { display: flex; gap: 48px; }
+    .footer-col h4 {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(198,155,90,0.5); margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block; font-size: 13px; color: rgba(240,232,216,0.4);
+      text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #c69b5a; }
+    .footer-bottom {
+      border-top: 1px solid rgba(198,155,90,0.08); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; color: rgba(240,232,216,0.2);
+    }
+    .footer-gold { color: rgba(198,155,90,0.4); }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      section { padding: 72px 24px; }
+      .stats-bar { padding: 32px 24px; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); gap: 24px; }
+      .stat-item + .stat-item { border-left: none; }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) { padding-top: 24px; border-top: 1px solid rgba(198,155,90,0.12); }
+      .menu-grid { grid-template-columns: 1fr; }
+      .experience-grid { grid-template-columns: 1fr; gap: 40px; }
+      .events-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .res-layout { grid-template-columns: 1fr; gap: 40px; }
+      .footer-top { flex-direction: column; gap: 40px; }
+      .footer-links { flex-wrap: wrap; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Marea</div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#experience">Experience</a>
+    <a href="#events">Private Events</a>
+    <a href="#reservations">Reservations</a>
+  </div>
+  <a href="#reservations" class="nav-cta">Reserve a Table</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Tampa Bay, Florida</div>
+      <h1>Where the Water<br>Meets <em>Fine Dining</em></h1>
+      <p class="hero-sub">Perched above Tampa Bay, Marea offers an unmatched dining experience — fresh coastal cuisine, handcrafted cocktails, and panoramic sunset views every evening.</p>
+      <div class="hero-actions">
+        <a href="#reservations" class="btn-primary">Reserve Your Table</a>
+        <a href="#menu" class="btn-outline">View the Menu</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="res-card">
+        <div class="res-card-header">
+          <span class="res-card-title">Evening Reservation</span>
+          <span class="res-status">Confirmed</span>
+        </div>
+        <div class="res-date-row">
+          <div class="res-field">
+            <label>Date</label>
+            <div class="val">Sat, Apr 19</div>
+          </div>
+          <div class="res-field">
+            <label>Time</label>
+            <div class="val">7:30 PM</div>
+          </div>
+          <div class="res-field">
+            <label>Guests</label>
+            <div class="val">4</div>
+          </div>
+          <div class="res-field">
+            <label>Section</label>
+            <div class="val">Terrace</div>
+          </div>
+        </div>
+        <div class="res-table-row">
+          <div>
+            <div class="res-table-info">Waterfront Table</div>
+            <div style="font-size:11px;color:rgba(198,155,90,0.4);margin-top:2px;">Bay view · Outdoor terrace</div>
+          </div>
+          <div class="res-table-num">T-07</div>
+        </div>
+        <div class="res-divider"></div>
+        <div class="res-note">"We've noted your anniversary — expect something special from the kitchen."</div>
+        <a href="#" class="res-confirm-btn">View Full Details</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">12+</div>
+      <div class="stat-label">Years on the Bay</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4.9★</div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Seats Available</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">18</div>
+      <div class="stat-label">Signature Dishes</div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="section-inner">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;">
+      <div>
+        <div class="section-tag">Seasonal Menu</div>
+        <h2>Crafted with the <em>Finest</em><br>Local Ingredients</h2>
+      </div>
+      <p class="section-sub">Sourced from Florida's Gulf waters and local farms daily. Our menu changes with the seasons — always fresh, always inspired.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-category">Starters</div>
+        <div class="menu-name">Gulf Shrimp Ceviche</div>
+        <div class="menu-desc">Citrus-cured Gulf shrimp, avocado, cucumber, jalapeño, fresh lime, toasted crostini.</div>
+        <div class="menu-price">$22 <span>/ starter</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-category">Starters</div>
+        <div class="menu-name">Seared Bay Scallops</div>
+        <div class="menu-desc">Pan-seared diver scallops, cauliflower purée, crispy capers, brown butter, micro herbs.</div>
+        <div class="menu-price">$28 <span>/ starter</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-category">Signature</div>
+        <div class="menu-name">Whole Roasted Snapper</div>
+        <div class="menu-desc">Florida red snapper, chimichurri, charred lemon, seasonal vegetables, herb oil.</div>
+        <div class="menu-price">$58 <span>/ entrée</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-category">Signature</div>
+        <div class="menu-name">Pan-Seared Mahi</div>
+        <div class="menu-desc">Local mahi-mahi, mango-chili salsa, coconut jasmine rice, citrus beurre blanc.</div>
+        <div class="menu-price">$46 <span>/ entrée</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-category">From the Land</div>
+        <div class="menu-name">8oz Filet Mignon</div>
+        <div class="menu-desc">Prime center-cut filet, truffle compound butter, potato gratin, roasted asparagus.</div>
+        <div class="menu-price">$68 <span>/ entrée</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-category">Dessert</div>
+        <div class="menu-name">Warm Chocolate Lava</div>
+        <div class="menu-desc">Valrhona chocolate fondant, Tahitian vanilla bean ice cream, gold leaf, sea salt.</div>
+        <div class="menu-price">$18 <span>/ dessert</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:#0f0b07;">
+  <div class="section-inner">
+    <div class="experience-grid">
+      <div class="exp-left">
+        <div class="section-tag">The Marea Experience</div>
+        <h2>More Than a Meal —<br>a <em>Memory</em></h2>
+        <p class="section-sub" style="margin-top:16px;">Every detail at Marea is considered. From the moment you arrive to the last pour of wine, we craft an experience you'll return to again and again.</p>
+        <div class="exp-features">
+          <div class="exp-feat">
+            <div class="exp-feat-icon">🌅</div>
+            <div>
+              <div class="exp-feat-title">Panoramic Bay Views</div>
+              <div class="exp-feat-desc">Floor-to-ceiling windows and an open-air terrace face directly onto Tampa Bay — every table has a view.</div>
+            </div>
+          </div>
+          <div class="exp-feat">
+            <div class="exp-feat-icon">🍷</div>
+            <div>
+              <div class="exp-feat-title">Curated Wine Program</div>
+              <div class="exp-feat-desc">300+ label cellar spanning Burgundy, Barossa, and beyond. Our sommelier pairs the perfect bottle for your evening.</div>
+            </div>
+          </div>
+          <div class="exp-feat">
+            <div class="exp-feat-icon">🎵</div>
+            <div>
+              <div class="exp-feat-title">Live Jazz, Friday & Saturday</div>
+              <div class="exp-feat-desc">Resident jazz quartet performs every weekend evening. Arrive early for the best seats near the stage.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-photo">
+          <div class="exp-photo-inner">🌊</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+          <div style="background:#18130c;border:1px solid rgba(198,155,90,0.1);border-radius:6px;padding:20px;text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#c69b5a;margin-bottom:6px;">Sunset</div>
+            <div style="font-size:11px;color:rgba(240,232,216,0.35);text-transform:uppercase;letter-spacing:0.1em;">Happy Hour 5–7 PM</div>
+          </div>
+          <div style="background:#18130c;border:1px solid rgba(198,155,90,0.1);border-radius:6px;padding:20px;text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#c69b5a;margin-bottom:6px;">Chef's</div>
+            <div style="font-size:11px;color:rgba(240,232,216,0.35);text-transform:uppercase;letter-spacing:0.1em;">Tasting Menu Fri–Sat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE EVENTS -->
+<section id="events">
+  <div class="section-inner">
+    <div class="section-tag">Private Events</div>
+    <h2>Host Your <em>Most Important</em><br>Moments at Marea</h2>
+    <p class="section-sub" style="margin-top:16px;">From intimate proposals to corporate galas, our private event spaces and dedicated event team ensure every occasion is extraordinary.</p>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-icon">💍</div>
+        <div class="event-title">Rehearsal Dinners & Celebrations</div>
+        <div class="event-desc">The Compass Room seats up to 40 guests for private celebrations. Custom menu, floral arrangements, and dedicated service staff included.</div>
+        <div class="event-detail">Seats 20–40 guests</div>
+        <div class="event-detail">Custom menu planning</div>
+        <div class="event-detail">Full A/V capability</div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🏢</div>
+        <div class="event-title">Corporate Dining & Buyouts</div>
+        <div class="event-desc">Impress clients and reward your team. Full restaurant buyouts available Sunday–Thursday. Business-ready with presentation screens and microphone setup.</div>
+        <div class="event-detail">Up to 200 guests</div>
+        <div class="event-detail">Presentation & A/V support</div>
+        <div class="event-detail">Catering packages available</div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🥂</div>
+        <div class="event-title">Wine Tastings & Chef's Table</div>
+        <div class="event-desc">An intimate experience for 6–12 guests. Tour the cellar, meet the chef, and enjoy a curated 5-course pairing dinner prepared tableside.</div>
+        <div class="event-detail">6–12 guests maximum</div>
+        <div class="event-detail">5-course chef's pairing</div>
+        <div class="event-detail">Cellar tour included</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section style="background:#0f0b07;">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:0;">
+      <div class="section-tag" style="justify-content:center;">Guest Reviews</div>
+      <h2 style="text-align:center;">What Our Guests Say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The snapper was the best fish I've ever had. We sat on the terrace and watched the sun go down over the bay — absolutely magical. We'll be back for our anniversary."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">J</div>
+          <div>
+            <div class="reviewer-name">Jessica & Mark T.</div>
+            <div class="reviewer-detail">Anniversary Dinner · Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We hosted our company's end-of-year dinner here for 80 people. The event team was extraordinary. Seamless from start to finish and the food exceeded every expectation."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">D</div>
+          <div>
+            <div class="reviewer-name">David R.</div>
+            <div class="reviewer-detail">Private Event · Yelp Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The sommelier recommended a Burgundy I'd never heard of — paired with the filet it was transcendent. This is Tampa Bay's finest dining experience, full stop."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">S</div>
+          <div>
+            <div class="reviewer-name">Sarah L.</div>
+            <div class="reviewer-detail">Regular Guest · Google Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATIONS -->
+<section id="reservations">
+  <div class="section-inner">
+    <div class="section-tag">Reservations</div>
+    <h2>Join Us for an <em>Unforgettable</em> Evening</h2>
+    <div class="res-layout">
+      <div class="res-info">
+        <h3>Hours & Location</h3>
+        <div class="res-hours">
+          <div class="res-hours-row">
+            <span class="res-hours-day">Monday – Tuesday</span>
+            <span class="res-hours-time closed">Closed</span>
+          </div>
+          <div class="res-hours-row">
+            <span class="res-hours-day">Wednesday – Thursday</span>
+            <span class="res-hours-time">5:00 PM – 10:00 PM</span>
+          </div>
+          <div class="res-hours-row">
+            <span class="res-hours-day">Friday – Saturday</span>
+            <span class="res-hours-time">5:00 PM – 11:00 PM</span>
+          </div>
+          <div class="res-hours-row">
+            <span class="res-hours-day">Sunday</span>
+            <span class="res-hours-time">4:00 PM – 9:00 PM</span>
+          </div>
+        </div>
+        <div class="res-contact-items">
+          <div class="res-contact-item"><span class="res-contact-icon">📞</span> (813) 555-0192</div>
+          <div class="res-contact-item"><span class="res-contact-icon">📧</span> reservations@mareawaterfront.com</div>
+          <div class="res-contact-item"><span class="res-contact-icon">📍</span> 1800 Bayshore Blvd, Tampa, FL 33606</div>
+          <div class="res-contact-item"><span class="res-contact-icon">🅿️</span> Complimentary valet parking available</div>
+        </div>
+      </div>
+      <div class="res-form">
+        <h3>Make a Reservation</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Michael" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Anderson" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" />
+          </div>
+          <div class="form-group">
+            <label>Time</label>
+            <select>
+              <option>5:00 PM</option>
+              <option>5:30 PM</option>
+              <option>6:00 PM</option>
+              <option selected>7:00 PM</option>
+              <option>7:30 PM</option>
+              <option>8:00 PM</option>
+              <option>8:30 PM</option>
+              <option>9:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Party Size</label>
+            <select>
+              <option>1 Guest</option>
+              <option>2 Guests</option>
+              <option selected>4 Guests</option>
+              <option>6 Guests</option>
+              <option>8+ Guests</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Seating Preference</label>
+            <select>
+              <option>No Preference</option>
+              <option selected>Terrace (Bay View)</option>
+              <option>Indoor Dining Room</option>
+              <option>Bar Seating</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Special Requests</label>
+          <textarea placeholder="Dietary restrictions, special occasions, accessibility needs..."></textarea>
+        </div>
+        <button class="form-submit">Request Reservation</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Marea</div>
+        <div class="footer-tagline">Where Tampa Bay's finest waterfront meets the art of fine dining.</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Dining</h4>
+          <a href="#">Dinner Menu</a>
+          <a href="#">Wine List</a>
+          <a href="#">Chef's Tasting</a>
+          <a href="#">Happy Hour</a>
+        </div>
+        <div class="footer-col">
+          <h4>Visit</h4>
+          <a href="#">Reservations</a>
+          <a href="#">Private Events</a>
+          <a href="#">Gift Cards</a>
+          <a href="#">Directions</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">TripAdvisor</a>
+          <a href="#">OpenTable</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Marea Waterfront Dining. All rights reserved.</span>
+      <span>1800 Bayshore Blvd, Tampa, FL 33606 · <span class="footer-gold">(813) 555-0192</span></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
