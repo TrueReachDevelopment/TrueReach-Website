@@ -341,7 +341,7 @@
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-top {
       display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 36px;
-      padding-bottom: 36px; border-bottom: 1px solid #e2dbd2;
+      padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .footer-brand { grid-column: span 1; }
     .footer-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
@@ -357,10 +357,34 @@
     .license-row { display: flex; gap: 16px; flex-wrap: wrap; }
     .license-badge { font-size: 11px; color: #7a7a86; background: #24242e; border: 1px solid #32323e; padding: 4px 10px; border-radius: 3px; }
 
+    /* Mobile hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; background: none; border: none;
+      cursor: pointer; padding: 4px;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #1a1a1e; border-radius: 2px; transition: all 0.25s; }
+    #mobileMenuRoof {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(245,241,236,0.98); backdrop-filter: blur(16px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    }
+    #mobileMenuRoof.open { display: flex; }
+    #mobileMenuRoof a {
+      font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em; color: #1a1a1e; text-decoration: none;
+    }
+    #mobileMenuRoof a:hover { color: #e86a2a; }
+    #mobileMenuRoof .close-btn {
+      position: absolute; top: 24px; right: 24px;
+      background: none; border: none; font-size: 28px; cursor: pointer; color: #5e5e68;
+    }
+
     /* Mobile */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
+      #navCtaDesktop { display: none; }
       .hero { padding: 60px 20px 0; }
       .hero-inner { grid-template-columns: 1fr; }
       .inspection-card { display: none; }
@@ -384,6 +408,15 @@
 </head>
 <body>
 
+<!-- MOBILE MENU -->
+<div id="mobileMenuRoof">
+  <button class="close-btn" onclick="document.getElementById('mobileMenuRoof').classList.remove('open');document.body.style.overflow='';">&times;</button>
+  <a href="#services" onclick="document.getElementById('mobileMenuRoof').classList.remove('open');document.body.style.overflow='';">Services</a>
+  <a href="#insurance" onclick="document.getElementById('mobileMenuRoof').classList.remove('open');document.body.style.overflow='';">Insurance</a>
+  <a href="#reviews" onclick="document.getElementById('mobileMenuRoof').classList.remove('open');document.body.style.overflow='';">Reviews</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenuRoof').classList.remove('open');document.body.style.overflow='';" style="color:#e86a2a;">Free Estimate</a>
+</div>
+
 <!-- EMERGENCY BANNER -->
 <div class="emergency-banner">
   🌩️ Storm in Tampa Bay? Emergency repairs available 24/7 — <a href="tel:8135550147">call (813) 555-0147 now</a>
@@ -401,7 +434,10 @@
     <a href="#reviews">Reviews</a>
     <a href="#contact">Contact</a>
   </div>
-  <a href="#contact" class="nav-cta">Free Estimate</a>
+  <a href="#contact" class="nav-cta" id="navCtaDesktop">Free Estimate</a>
+  <button class="hamburger" onclick="document.getElementById('mobileMenuRoof').classList.add('open');document.body.style.overflow='hidden';" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -482,7 +518,7 @@
     <div class="trust-icon">🏅</div>
     <div>
       <div class="trust-title">Licensed & Insured</div>
-      <div class="trust-desc">FL Cert. #CCC1332891</div>
+      <div class="trust-desc">FL Lic. #CCC1332891</div>
     </div>
   </div>
   <div class="trust-item">
@@ -841,7 +877,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Storm Shield Roofing LLC. All rights reserved.</span>
+      <span>© 2026 Storm Shield Roofing LLC. All rights reserved.</span>
       <div class="license-row">
         <span class="license-badge">FL Lic. #CCC1332891</span>
         <span class="license-badge">BBB A+</span>

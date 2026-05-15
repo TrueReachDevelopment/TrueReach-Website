@@ -413,10 +413,34 @@
     .footer-col a:hover { color: #c69b5a; }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(242,232,213,0.15); }
 
+    /* Mobile hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; background: none; border: none;
+      cursor: pointer; padding: 4px;
+    }
+    .hamburger span { display: block; width: 22px; height: 1px; background: #f2e8d5; }
+    #mobileMenuRes {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(10,8,6,0.98); backdrop-filter: blur(16px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    }
+    #mobileMenuRes.open { display: flex; }
+    #mobileMenuRes a {
+      font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300;
+      letter-spacing: 0.04em; color: #f2e8d5; text-decoration: none;
+    }
+    #mobileMenuRes a:hover { color: #c69b5a; }
+    #mobileMenuRes .close-btn {
+      position: absolute; top: 24px; right: 24px;
+      background: none; border: none; font-size: 28px; cursor: pointer; color: rgba(242,232,213,0.4);
+    }
+
     /* Mobile */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-reserve { display: none; }
       .hero-content { padding-bottom: 60px; }
       .hours-strip { padding: 16px 24px; gap: 24px; }
       .hours-sep { display: none; }
@@ -438,6 +462,15 @@
 </head>
 <body>
 
+<!-- MOBILE MENU -->
+<div id="mobileMenuRes">
+  <button class="close-btn" onclick="document.getElementById('mobileMenuRes').classList.remove('open');document.body.style.overflow='';">&times;</button>
+  <a href="#menu" onclick="document.getElementById('mobileMenuRes').classList.remove('open');document.body.style.overflow='';">Menu</a>
+  <a href="#chef" onclick="document.getElementById('mobileMenuRes').classList.remove('open');document.body.style.overflow='';">The Chef</a>
+  <a href="#private" onclick="document.getElementById('mobileMenuRes').classList.remove('open');document.body.style.overflow='';">Private Dining</a>
+  <a href="#reservations" onclick="document.getElementById('mobileMenuRes').classList.remove('open');document.body.style.overflow='';" style="color:#c69b5a;">Reserve</a>
+</div>
+
 <!-- NAV -->
 <nav id="mainNav">
   <div class="nav-logo">Marea</div>
@@ -448,6 +481,9 @@
     <a href="#reservations">Reservations</a>
   </div>
   <a href="#reservations" class="nav-reserve">Reserve</a>
+  <button class="hamburger" onclick="document.getElementById('mobileMenuRes').classList.add('open');document.body.style.overflow='hidden';" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO: CSS waterfront sunset scene -->
@@ -496,7 +532,7 @@
   <div class="hours-sep"></div>
   <div class="hours-item">
     <div class="hours-day">Happy Hour</div>
-    <div class="hours-time">Daily 5 – 7 PM</div>
+    <div class="hours-time">Wed – Sun 5 – 7 PM</div>
   </div>
 </div>
 
@@ -842,7 +878,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Marea Waterfront Dining. All rights reserved.</span>
+      <span>© 2026 Marea Waterfront Dining. All rights reserved.</span>
       <span>1800 Bayshore Blvd, Tampa, FL 33606</span>
     </div>
   </div>
