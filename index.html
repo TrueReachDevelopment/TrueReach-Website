@@ -243,6 +243,11 @@
     ::-webkit-scrollbar-track { background: #02040a; }
     ::-webkit-scrollbar-thumb { background: #14213a; border-radius: 3px; }
 
+    /* Particle canvas */
+    #particles {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    }
+
     /* ── Mobile fixes ── */
     @media (max-width: 768px) {
       /* Sections: reduce vertical padding */
@@ -311,6 +316,7 @@
   </style>
 </head>
 <body class="relative">
+<canvas id="particles"></canvas>
 
 <!-- MOBILE MENU -->
 <div id="mobileMenu">
@@ -894,5 +900,91 @@
     btn.textContent = 'Send Message →'; btn.disabled = false;
   }
 </script>
+
+<script>
+  // ── Particle Network Animation ──
+  const _canvas = document.getElementById('particles');
+  const __ctx   = _canvas.getContext('2d');
+
+  const _cfg = {
+    count:      60,
+    maxDist:    140,
+    opacity:    0.11,
+    speedScale: 1.0,
+    dotRadius:  1.6,
+  };
+
+  let _W, _H, _particles = [];
+
+  function _makeParticle() {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = (0.15 + Math.random() * 0.25) * _cfg.speedScale;
+    return {
+      x:  Math.random() * _W,
+      y:  Math.random() * _H,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      r:  _cfg.dotRadius + Math.random() * 0.8,
+    };
+  }
+
+  function _resize() {
+    _W = _canvas.width  = window.innerWidth;
+    _H = _canvas.height = window.innerHeight;
+    _particles = [];
+    for (let i = 0; i < _cfg.count; i++) _particles.push(_makeParticle());
+  }
+
+  function _draw() {
+    __ctx.clearRect(0, 0, _W, _H);
+    const op = _cfg.opacity;
+
+    for (const p of _particles) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -10)     p.x = _W + 10;
+      if (p.x > _W + 10) p.x = -10;
+      if (p.y < -10)     p.y = _H + 10;
+      if (p.y > _H + 10) p.y = -10;
+    }
+
+    for (let i = 0; i < _particles.length; i++) {
+      for (let j = i + 1; j < _particles.length; j++) {
+        const a = _particles[i], b = _particles[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist > _cfg.maxDist) continue;
+        const fade = 1 - dist / _cfg.maxDist;
+        __ctx.beginPath();
+        __ctx.moveTo(a.x, a.y);
+        __ctx.lineTo(b.x, b.y);
+        __ctx.strokeStyle = `rgba(30,94,245,${op * fade * 0.9})`;
+        __ctx.lineWidth = 0.7;
+        __ctx.stroke();
+      }
+    }
+
+    for (const p of _particles) {
+      const grd = __ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+      grd.addColorStop(0, `rgba(91,143,249,${op * 1.4})`);
+      grd.addColorStop(1, 'rgba(91,143,249,0)');
+      __ctx.beginPath();
+      __ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+      __ctx.fillStyle = grd;
+      __ctx.fill();
+
+      __ctx.beginPath();
+      __ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      __ctx.fillStyle = `rgba(180,210,255,${Math.min(1, op * 7)})`;
+      __ctx.fill();
+    }
+
+    requestAnimationFrame(_draw);
+  }
+
+  window.addEventListener('resize', _resize, { passive: true });
+  _resize();
+  requestAnimationFrame(_draw);
+</script>
+
 </body>
 </html>
